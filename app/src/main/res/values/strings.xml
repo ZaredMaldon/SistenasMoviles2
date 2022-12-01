@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SistemasMoviles</string>
+    <string name="mascotas_registradas">Mascotas Registradas</string>
+    <string name="colores">Colores</string>
+    <string name="perfil_de_usuario">Perfil de usuario</string>
+    <string name="lenguaje">Lenguaje</string>
+    <string name="configuraci_n">Configuración</string>
+    <string name="config">Config</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>
