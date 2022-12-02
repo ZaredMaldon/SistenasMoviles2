@@ -49,6 +49,11 @@ class ActivityRegister : AppCompatActivity() {
         createNewAccount()
     }
 
+    fun onClickVolver(view: View) {
+        val change = Intent(this,ActivityPublicaciones::class.java)
+        startActivity(change)
+    }
+
     private fun createNewAccount(){
         val name:String=txtName.text.toString()
         val email:String=txtEmail.text.toString()

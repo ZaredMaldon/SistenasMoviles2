@@ -9,10 +9,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar9"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
         android:background="@color/color_primario"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -20,6 +18,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Mensajes"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onClickMensajes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton25"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="@+id/toolbar9"
+        app:layout_constraintTop_toTopOf="@+id/toolbar9"
+        app:srcCompat="@drawable/chat"
+        app:tint="#FFFFFF" />
+
+    <ImageButton
+        android:id="@+id/imageButton25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:contentDescription="Inicio"
+        android:minWidth="48dp"
+        android:onClick="onClickHome"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/toolbar9"
+        app:layout_constraintTop_toTopOf="@+id/toolbar9"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/home"
+        app:tint="#FFFFFF" />
+
+    <ImageButton
+        android:id="@+id/imageButton26"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginEnd="-16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Buscar"
+        android:minWidth="48dp"
+        android:onClick="onClickBuscar"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar9"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar9"
+        app:layout_constraintStart_toEndOf="@+id/imageButton25"
+        app:layout_constraintTop_toTopOf="@+id/toolbar9"
+        app:srcCompat="@drawable/search"
+        app:tint="#FFFFFF" />
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar"
@@ -118,6 +167,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/redondo_verde"
         android:clickable="true"
+        android:onClick="onClickPublicacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
@@ -180,49 +230,5 @@
                 android:text="TextView" />
         </LinearLayout>
     </FrameLayout>
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginEnd="-16dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="Buscar"
-        android:minWidth="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar9"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toEndOf="@+id/imageButton5"
-        app:layout_constraintTop_toTopOf="@+id/toolbar9"
-        app:srcCompat="@android:drawable/ic_menu_search" />
-
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:contentDescription="Inicio"
-        android:minWidth="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar9"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar9"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/toolbar9"
-        app:layout_constraintTop_toTopOf="@+id/toolbar9"
-        app:srcCompat="@android:drawable/btn_radio" />
-
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-16dp"
-        android:background="#00FFFFFF"
-        android:contentDescription="Mensajes"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar9"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
-        app:layout_constraintStart_toStartOf="@+id/toolbar9"
-        app:layout_constraintTop_toTopOf="@+id/toolbar9"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,10 +21,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.002" />
 
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Volver"
+        android:onClick="onClickVolver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back"
+        app:tint="#FFFFFF" />
+
     <EditText
         android:id="@+id/TB_Password2"
-        android:layout_width="317dp"
-        android:layout_height="53dp"
+        android:layout_width="319dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,13 +48,12 @@
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
 
-
     <TextView
         android:id="@+id/textView51"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Contraseña"
+        android:text="Confirmar Contraseña"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +63,7 @@
         android:id="@+id/textView50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Contraseña"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,6 +75,7 @@
         android:id="@+id/textView49"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Usuario"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +105,6 @@
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar6" />
 
 
-
     <TextView
         android:id="@+id/textView43"
         android:layout_width="wrap_content"
@@ -103,8 +116,10 @@
         android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="@+id/materialToolbar6"
         app:layout_constraintEnd_toEndOf="@+id/materialToolbar6"
+        app:layout_constraintHorizontal_bias="0.801"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/materialToolbar6"
+        app:layout_constraintVertical_bias="0.8"
         tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     <TextView
@@ -134,19 +149,17 @@
         android:id="@+id/TB_Email"
         android:layout_width="311dp"
         android:layout_height="48dp"
-        android:layout_marginTop="34dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView48"
+        app:layout_constraintTop_toBottomOf="@+id/textView48"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/TB_Name"
         android:layout_width="311dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +170,7 @@
     <EditText
         android:id="@+id/TB_Usuario"
         android:layout_width="310dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"

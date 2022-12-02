@@ -8,6 +8,71 @@
     tools:context=".ActivityPusuario">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar5"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="@color/color_primario"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton19"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginEnd="-16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Buscar"
+        android:minWidth="48dp"
+        android:onClick="onClickBuscar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar5"
+        app:layout_constraintStart_toEndOf="@+id/imageButton17"
+        app:layout_constraintTop_toTopOf="@+id/toolbar5"
+        app:srcCompat="@drawable/search"
+        app:tint="#FFFFFF" />
+
+    <ImageButton
+        android:id="@+id/imageButton18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-16dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Mensajes"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onClickMensajes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton17"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="@+id/toolbar5"
+        app:layout_constraintTop_toTopOf="@+id/toolbar5"
+        app:srcCompat="@drawable/chat"
+        app:tint="#FFFFFF" />
+
+    <ImageButton
+        android:id="@+id/imageButton17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:contentDescription="Inicio"
+        android:minWidth="48dp"
+        android:onClick="onClickHome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar5"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/toolbar5"
+        app:layout_constraintTop_toTopOf="@+id/toolbar5"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/home"
+        app:tint="#FFFFFF" />
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="409dp"
         android:layout_height="306dp"
@@ -23,6 +88,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Volver"
+        android:onClick="onClickVolver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back"
+        app:tint="#FFFFFF" />
 
     <ImageView
         android:id="@+id/id_PerfilUsuario"
@@ -83,22 +162,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="1dp"
-        android:background="@color/color_primario"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -180,45 +243,5 @@
         app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toEndOf="@+id/imageFilterButton"
         app:layout_constraintTop_toTopOf="@+id/toolbar3" />
-
-    <androidx.constraintlayout.utils.widget.ImageFilterButton
-        android:id="@+id/imageFilterButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    <androidx.constraintlayout.utils.widget.ImageFilterButton
-        android:id="@+id/imageFilterButton5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.631"
-        app:srcCompat="@android:drawable/ic_search_category_default" />
-
-    <androidx.constraintlayout.utils.widget.ImageFilterButton
-        android:id="@+id/imageFilterButton7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/app_name"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="?android:attr/listChoiceIndicatorSingle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

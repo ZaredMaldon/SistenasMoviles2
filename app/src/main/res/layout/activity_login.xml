@@ -16,10 +16,10 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.006" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView26"
@@ -35,34 +35,20 @@
         app:layout_constraintTop_toTopOf="@+id/materialToolbar2"
         tools:ignore="TextContrastCheck" />
 
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="110dp"
-        android:textColor="#7B1FA2"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/LB_EmailLogin"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/textView26"
-        app:layout_constraintTop_toBottomOf="@+id/textView26"
-        tools:text="¿Aun no tienes cuenta?" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="136dp"
         android:layout_height="48dp"
-        android:layout_marginStart="90dp"
         android:layout_marginTop="115dp"
         android:background="#00FFFFFF"
         android:onClick="onClickAbReg"
         android:text="Click Aquí"
         app:layout_constraintBottom_toBottomOf="@+id/materialToolbar2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.783"
+        app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456"
+        app:layout_constraintVertical_bias="0.435"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -81,8 +67,8 @@
         android:id="@+id/LB_PasswordLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:text="Constraseña"
+        android:layout_marginBottom="10dp"
+        android:text="Contraseña"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/TB_PasswordLogin"
         app:layout_constraintStart_toStartOf="@+id/LB_EmailLogin" />
@@ -105,6 +91,7 @@
         android:id="@+id/TB_EmailLogin"
         android:layout_width="289dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="80dp"
         android:autofillHints=""
         android:ems="10"
@@ -113,6 +100,7 @@
         app:layout_constraintBottom_toTopOf="@+id/TB_PasswordLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LB_EmailLogin"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
@@ -127,4 +115,19 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
         android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="Aun no tienes cuenta? Registrate "
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar2"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        app:layout_constraintVertical_bias="0.483" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

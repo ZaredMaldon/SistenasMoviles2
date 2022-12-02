@@ -41,9 +41,7 @@
         <activity
             android:name=".ActivityBuscar"
             android:exported="false" />
-        <activity
-            android:name=".ActivityConfiguracion"
-            android:exported="false" />
+
         <activity
             android:name=".ActivityChats"
             android:exported="false" />
