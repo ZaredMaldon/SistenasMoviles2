@@ -11,6 +11,16 @@ class ActivityPublicaciones : AppCompatActivity() {
         setContentView(R.layout.activity_publicaciones)
     }
 
+    fun onClickUsuario(view: View) {
+        val change = Intent(this,ActivityPusuario::class.java)
+        startActivity(change)
+    }
+
+    fun onClickNuevaPubli(view: View) {
+        val change = Intent(this,ActivityPublicacion::class.java)
+        startActivity(change)
+    }
+
     fun onClickHome(view: View) {
         val change = Intent(this,ActivityPublicaciones::class.java)
         startActivity(change)
