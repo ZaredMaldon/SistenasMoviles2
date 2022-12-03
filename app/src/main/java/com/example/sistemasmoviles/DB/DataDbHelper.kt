@@ -27,7 +27,6 @@ class DataDbHelper(var context:Context):SQLiteOpenHelper(context,SetDB.DB_NAME,n
             val createPetTable:String = "CREATE TABLE " + SetDB.tblMascotas.TABLE_NAME + "(" +
                     SetDB.tblMascotas.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     SetDB.tblMascotas.COL_NOMBRE + " VARCHAR(50)," +
-                    SetDB.tblMascotas.COL_DESCRIPCION + " VARCHAR(256)," +
                     SetDB.tblMascotas.COL_FKTIPOANIMAL + " INTEGER," +
                     SetDB.tblMascotas.COL_IDIMAGE + " INTEGER," +
                     SetDB.tblMascotas.COL_IMAGEN + " BLOB)"
@@ -36,7 +35,7 @@ class DataDbHelper(var context:Context):SQLiteOpenHelper(context,SetDB.DB_NAME,n
             val createPostTable:String = "CREATE TABLE " + SetDB.tblPublicaciones.TABLE_NAME + "(" +
                     SetDB.tblPublicaciones.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     SetDB.tblPublicaciones.COL_TITLE + " VARCHAR(25)," +
-                    SetDB.tblPublicaciones.COL_PUBLICACION + " VARCHAR(256)," +
+                    SetDB.tblPublicaciones.COL_DESCRIPCION + " VARCHAR(256)," +
                     SetDB.tblPublicaciones.COL_FKUSUARIO + " INTEGER," +
                     SetDB.tblPublicaciones.COL_FKMASCOTA + " INTEGER," +
                     SetDB.tblPublicaciones.COL_ESTATUS + " BOOL," +

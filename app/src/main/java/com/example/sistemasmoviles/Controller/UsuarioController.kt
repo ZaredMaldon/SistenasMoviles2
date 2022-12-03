@@ -2,7 +2,10 @@ package com.example.sistemasmoviles.Controller
 
 import com.example.sistemasmoviles.Model.Usuario
 
+
 class UsuarioController(var model:Usuario) {
+
+
     fun getUserName():String{
         return model.name
     }

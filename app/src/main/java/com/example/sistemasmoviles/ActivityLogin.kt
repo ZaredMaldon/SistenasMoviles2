@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.content.Intent
 import android.text.TextUtils
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,8 @@ class ActivityLogin : AppCompatActivity() {
         auth=FirebaseAuth.getInstance()
 
 
+
+
     }
 
     fun onClickAbReg(view: View) { //cambiar a pantalla de registro
@@ -37,6 +40,7 @@ class ActivityLogin : AppCompatActivity() {
 
     private fun loginUser(){
         val user:String=txtUser.text.toString()
+
         val password:String=txtPassword.text.toString()
 
         if(!TextUtils.isEmpty(user)&&!TextUtils.isEmpty(password)){
@@ -44,6 +48,7 @@ class ActivityLogin : AppCompatActivity() {
                 .addOnCompleteListener(this){
                     task->
                     if(task.isSuccessful){
+
                         action()
                     }else{
                         Toast.makeText(this, "Error en la autenticación", Toast.LENGTH_SHORT).show()

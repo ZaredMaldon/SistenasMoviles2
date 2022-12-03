@@ -6,35 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ActivityPublicacion">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="76dp"
-        android:background="@drawable/redondo_borde"
-        android:ems="10"
-        android:hint="Descripcion"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView38"
-        app:layout_constraintTop_toBottomOf="@+id/textView38" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="76dp"
-        android:background="@drawable/redondo_borde"
-        android:ems="10"
-        android:hint="Tipo"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView36"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
-
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/materialToolbar3"
+        android:id="@+id/EncabezadoPM"
         android:layout_width="0dp"
         android:layout_height="140dp"
         android:layout_marginTop="-10dp"
@@ -71,63 +44,139 @@
         android:text="Publica una nueva mascota!"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/materialToolbar3"
+        app:layout_constraintBottom_toBottomOf="@+id/EncabezadoPM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.442"
-        app:layout_constraintStart_toStartOf="@+id/materialToolbar3"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintStart_toStartOf="@+id/EncabezadoPM"
+        app:layout_constraintTop_toTopOf="@+id/EncabezadoPM"
         app:layout_constraintVertical_bias="0.4" />
 
-    <TextView
-        android:id="@+id/textView36"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="185dp"
-        android:text="Tipo:"
-        android:textSize="24sp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_PublicarPM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar3" />
+        app:layout_constraintTop_toBottomOf="@+id/EncabezadoPM"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck">
 
-    <TextView
-        android:id="@+id/textView38"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Descripcion:"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="30dp">
 
-    <TextView
-        android:id="@+id/textView39"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Fotografias:"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+
+            <TextView
+                android:id="@+id/lbl_NombrePM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text="Nombre de Mascota:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_NombrePM"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lbl_EdadPM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text="Edad de Mascota:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_EdadPM"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Edad"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lbl_TipoPM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:text=" Tipo de Animal:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_TipoPM"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Tipo"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lbl_Fotografia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Fotografias:"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/Btn_FotosPM"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:background="@drawable/redondo_verde"
+                android:text="Adjuntar" />
+
+            <TextView
+                android:id="@+id/lbl_Descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Descripcion:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_DescripcionPM"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Descripcion"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="0dp"
+        android:id="@+id/btn_PublicarPM"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/redondo_verde"
-        android:text="Adjuntar"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
-        app:layout_constraintStart_toEndOf="@+id/textView39"
-        app:layout_constraintTop_toTopOf="@+id/textView39" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="11dp"
         android:text="Publicar"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/textView39"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        android:onClick="onClickPublicar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
