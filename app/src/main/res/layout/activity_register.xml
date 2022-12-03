@@ -40,7 +40,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scrollbarStyle="insideOverlay"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_Registro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar6">
@@ -48,13 +48,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/LB_EmailU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:text="Email"
                 android:textSize="24sp" />
 
@@ -62,7 +62,7 @@
                 android:id="@+id/TB_Email"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
-                android:background="#FFFFFF"
+                android:background="@drawable/redondo_borde"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
@@ -72,33 +72,54 @@
                 android:id="@+id/LB_NombreU"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:text="Nombre"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Name"
+                android:id="@+id/TB_Email2"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_ApPatU"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Apellido Paterno"
                 android:textSize="24sp" />
 
+            <EditText
+                android:id="@+id/TB_Email3"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
             <TextView
                 android:id="@+id/LB_ApMat"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Apellido Materno"
                 android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_Email4"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_UsuarioU"
@@ -109,13 +130,14 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Usuario"
-                android:layout_width="310dp"
+                android:id="@+id/TB_Email5"
+                android:layout_width="311dp"
                 android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_ContraseñaU"
@@ -126,12 +148,14 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Password2"
-                android:layout_width="319dp"
+                android:id="@+id/TB_Email6"
+                android:layout_width="311dp"
                 android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_ConfirmarContraU"
@@ -142,12 +166,14 @@
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Password"
-                android:layout_width="319dp"
+                android:id="@+id/TB_Email7"
+                android:layout_width="311dp"
                 android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         </LinearLayout>
     </ScrollView>
