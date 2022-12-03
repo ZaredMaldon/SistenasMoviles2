@@ -7,10 +7,14 @@ class Usuario {
     var apMat: String? = null;
     var usuario: String? = null;
     var contraseña: String? = null;
-    var status: Boolean? = null;
 
     constructor() {}
-    constructor(texto: String?) {
-        nombre = texto
+    constructor(emailU: String?, nombreU: String?, apPatU: String?, apMatU: String?, usuarioU: String?, contraseñaU: String?) {
+        email = emailU
+        nombre = nombreU
+        apPat = apPatU
+        apMat = apMatU
+        usuario = usuarioU
+        contraseña = contraseñaU
     }
 }

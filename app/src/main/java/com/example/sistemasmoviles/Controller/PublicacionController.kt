@@ -10,8 +10,10 @@ import com.example.sistemasmoviles.R
 import java.util.ArrayList
 
 class PublicacionController(
+
     private val publicacionesList: ArrayList<Publicacion>,
     private val resource: Int
+
 ) : RecyclerView.Adapter<PublicacionController.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(
