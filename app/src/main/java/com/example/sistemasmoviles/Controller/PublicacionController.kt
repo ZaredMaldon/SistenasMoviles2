@@ -29,9 +29,8 @@ class PublicacionController(
         return publicacionesList.size
     }
 
-    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(
-        view
-    ) {
+    inner class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
+
         val textViewMensaje: TextView
 
         init {

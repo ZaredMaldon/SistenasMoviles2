@@ -23,7 +23,7 @@ class ActivityRegister : AppCompatActivity() {
     private lateinit var dbReference:DatabaseReference
     private lateinit var database:FirebaseDatabase
     private lateinit var auth:FirebaseAuth
-    private lateinit var  progressBar:ProgressBar
+    private lateinit var progressBar:ProgressBar
 
 
 
