@@ -40,6 +40,7 @@ dependencies {
 
     implementation("androidx.recyclerview:recyclerview:1.2.1")
     // For control over item selection of both touch and mouse driven selection
+
     implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
     implementation 'androidx.core:core-ktx:1.9.0'
@@ -59,6 +60,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.google.code.gson:gson:2.10'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //Esto para generar un interseptor que nos va a permitir desplegar la respuesta del  servicio en el logcat
+    implementation 'com.squareup.okhttp3:okhttp:4.6.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.6.0'
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.sistemasmoviles">
+    package="com.example.sistemasmoviles" >
+
     <!-- Se agregan los permisos necesarios para acceder a internet -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.INTERNET" />
 
     <application
         android:name=".UserApplication"
@@ -16,35 +18,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SistemasMoviles"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
-        <activity
-            android:name=".ActivityModificarU"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+        tools:targetApi="31"
+        >
+
+
         <activity
             android:name=".ActivityPublicacion"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".ActivityRegister"
             android:exported="false" />
         <activity
             android:name=".ActivityLogin"
-            android:exported="true">
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".ActivityPublicaciones"
+            android:exported="false" />
+
+        <activity
+            android:name=".ActivityBuscar"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActivityPublicaciones"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityBuscar"
-            android:exported="false" />
+
         <activity
             android:name=".ActivityChats"
             android:exported="false" />

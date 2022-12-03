@@ -1,21 +1,13 @@
 package com.example.sistemasmoviles
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
-import androidx.core.content.PackageManagerCompat.LOG_TAG
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.sistemasmoviles.Controller.PublicacionController
-import com.example.sistemasmoviles.DB.API
 import com.example.sistemasmoviles.Model.Publicacion
-import org.json.JSONObject
 
 class ActivityPublicacion : AppCompatActivity() {
     private lateinit var publicacionController:PublicacionController
