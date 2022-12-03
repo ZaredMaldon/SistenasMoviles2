@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 class UsuarioController() : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var dbReference:DatabaseReference
+    private lateinit var dbReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
 
     fun createNewAccount(
@@ -24,9 +24,9 @@ class UsuarioController() : AppCompatActivity() {
         contraseña: String
     ) {
 
-        database= FirebaseDatabase.getInstance()
-        auth=FirebaseAuth.getInstance()
-        dbReference=database.reference.child("User")
+        database = FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
+        dbReference = database.reference.child("User")
 
         auth.createUserWithEmailAndPassword(email, contraseña)
             .addOnCompleteListener(this) { task ->
@@ -43,6 +43,32 @@ class UsuarioController() : AppCompatActivity() {
                     action()
                 }
             }
+
+    }
+
+    fun modifyAccount(
+        email: String,
+        nombre: String,
+        apPat: String,
+        apMat: String,
+        usuario: String,
+        contraseña: String
+    ) {
+
+        database = FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
+        dbReference = database.reference.child("User")
+
+        val user: FirebaseUser? = auth.currentUser
+        verifyEmail(user)
+        val userBD = dbReference.child(user?.uid.toString())
+        userBD.child("Email").setValue(email)
+        userBD.child("Name").setValue(nombre)
+        userBD.child("ApellidoPaterno").setValue(apPat)
+        userBD.child("ApellidoMaterno").setValue(apMat)
+        userBD.child("Usuario").setValue(usuario)
+        userBD.child("Password").setValue(contraseña)
+        action()
 
     }
 

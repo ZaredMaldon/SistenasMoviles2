@@ -24,7 +24,6 @@ class ActivityPublicaciones : AppCompatActivity() {
         setContentView(R.layout.activity_publicaciones)
 
         textNombre = findViewById(R.id.textView3)
-
         firebaseAuth = FirebaseAuth.getInstance()
         userFirebase = firebaseAuth.currentUser!!
 
@@ -34,8 +33,9 @@ class ActivityPublicaciones : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
                     var nombre = snapshot.child("Name").value.toString()
-
-                    textNombre.text = nombre;
+                    var apellidoP = snapshot.child("ApellidoPaterno").value.toString()
+                    var apellidoM = snapshot.child("ApellidoMaterno").value.toString()
+                    textNombre.text = nombre + " " + apellidoP + " " + apellidoM;
 
                 }
             }

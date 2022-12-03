@@ -69,4 +69,9 @@ class ActivityPusuario : AppCompatActivity() {
         val change = Intent(this,ActivityBuscar::class.java)
         startActivity(change)
     }
+
+    fun onClickEditar(view: View) {
+        val change = Intent(this,ActivityModificarU::class.java)
+        startActivity(change)
+    }
 }
