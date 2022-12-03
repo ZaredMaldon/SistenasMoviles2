@@ -9,8 +9,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar5"
-        android:layout_width="409dp"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/color_primario"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -72,7 +72,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="306dp"
         android:layout_marginTop="-15dp"
         android:layout_marginBottom="41dp"
@@ -103,19 +103,16 @@
         app:tint="#FFFFFF" />
 
     <ImageView
-        android:id="@+id/id_PerfilUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="-10dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/id_NombreU"
+        android:id="@+id/imageView5"
+        android:layout_width="154dp"
+        android:layout_height="155dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="TODO" />
+        app:layout_constraintVertical_bias="0.22000003"
+        app:srcCompat="@drawable/person" />
 
     <TextView
         android:id="@+id/id_NombreU"
@@ -130,22 +127,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_PerfilUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/id_EmailU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="40dp"
         android:text="email@gmail.com"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/id_Mascotas"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_NombreU" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.72" />
 
     <TextView
         android:id="@+id/id_Mascotas"
@@ -251,6 +247,7 @@
         android:layout_marginBottom="16dp"
         android:background="#00FFFFFF"
         android:contentDescription="Edit"
+        android:onClick="onClickEditar"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/edit"

@@ -1,35 +1,90 @@
 package com.example.sistemasmoviles.Controller
 
-import com.example.sistemasmoviles.Model.Usuario
+import android.content.Intent
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.sistemasmoviles.ActivityLogin
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
+class UsuarioController() : AppCompatActivity() {
 
-class UsuarioController(var model:Usuario) {
+    private lateinit var auth: FirebaseAuth
+    private lateinit var dbReference: DatabaseReference
+    private lateinit var database: FirebaseDatabase
 
+    fun createNewAccount(
+        email: String,
+        nombre: String,
+        apPat: String,
+        apMat: String,
+        usuario: String,
+        contraseña: String
+    ) {
 
-    fun getUserName():String{
-        return model.name
+        database = FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
+        dbReference = database.reference.child("User")
+
+        auth.createUserWithEmailAndPassword(email, contraseña)
+            .addOnCompleteListener(this) { task ->
+                if (task.isComplete) {
+                    val user: FirebaseUser? = auth.currentUser
+                    verifyEmail(user)
+                    val userBD = dbReference.child(user?.uid.toString())
+                    userBD.child("Email").setValue(email)
+                    userBD.child("Name").setValue(nombre)
+                    userBD.child("ApellidoPaterno").setValue(apPat)
+                    userBD.child("ApellidoMaterno").setValue(apMat)
+                    userBD.child("Usuario").setValue(usuario)
+                    userBD.child("Password").setValue(contraseña)
+                    action()
+                }
+            }
+
     }
-    fun getUserid(): Int? {
-        return model.id
-    }
-    fun setUser(name:String,apPat:String,apMat:String,email:String,user:String, password:String, status:Boolean,  idImage:Int, image:Byte){
-        model.name=name
-        model.apPat=apPat
-        model.apMat=apMat
-        model.email=email
-        model.user=user
-        model.password=password
-        model.status=status
-        model.idImage=idImage
-        model.image=image
-    }
-    fun getUser():Usuario{
-        return model
-    }
-    fun updateView(){
-        /*Se tendria que mandar la view desde los parametros como hicimos en el usuario para hacer esto
-        * view.printDetails(model.Name,model.id)
-        * siendo view la variable o el nombre que le dimos a esta*/
 
+    fun modifyAccount(
+        email: String,
+        nombre: String,
+        apPat: String,
+        apMat: String,
+        usuario: String,
+        contraseña: String
+    ) {
+
+        database = FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
+        dbReference = database.reference.child("User")
+
+        val user: FirebaseUser? = auth.currentUser
+        verifyEmail(user)
+        val userBD = dbReference.child(user?.uid.toString())
+        userBD.child("Email").setValue(email)
+        userBD.child("Name").setValue(nombre)
+        userBD.child("ApellidoPaterno").setValue(apPat)
+        userBD.child("ApellidoMaterno").setValue(apMat)
+        userBD.child("Usuario").setValue(usuario)
+        userBD.child("Password").setValue(contraseña)
+        action()
+
+    }
+
+    private fun verifyEmail(user:FirebaseUser?){
+        user?.sendEmailVerification()
+            ?.addOnCompleteListener(this){
+                    task->
+                if(task.isComplete){
+                    Toast.makeText(this,"Email enviado", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this,"Error al enviar el email", Toast.LENGTH_LONG).show()
+                }
+            }
+    }
+
+    private fun action(){
+        startActivity(Intent(this, ActivityLogin::class.java))
     }
 }
