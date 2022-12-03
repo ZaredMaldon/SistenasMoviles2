@@ -1,15 +1,16 @@
 package com.example.sistemasmoviles.Model
 
-data class Usuario(
-    var id:Int?,
-    var name:String,
-    var apPat:String,
-    var apMat:String,
-    var email:String,
-    var user:String,
-    var password:String,
-    var status:Boolean,
-    var idImage:Int?,
-    var image:Byte?
-    ){
+class Usuario {
+    var email: String? = null;
+    var nombre: String? = null;
+    var apPat: String? = null;
+    var apMat: String? = null;
+    var usuario: String? = null;
+    var contraseña: String? = null;
+    var status: Boolean? = null;
+
+    constructor() {}
+    constructor(texto: String?) {
+        nombre = texto
+    }
 }

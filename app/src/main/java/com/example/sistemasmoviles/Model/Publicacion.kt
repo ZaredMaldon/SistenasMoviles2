@@ -1,7 +1,7 @@
 package com.example.sistemasmoviles.Model
 
 class Publicacion {
-    var nombre: String? = null
+    var nombre: String? = null;
 
     constructor() {}
     constructor(texto: String?) {

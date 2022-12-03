@@ -39,6 +39,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
         android:scrollbarStyle="insideOverlay"
         app:layout_constraintBottom_toTopOf="@+id/Btn_Registro"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,13 +54,14 @@
 
             <TextView
                 android:id="@+id/LB_EmailU"
-                android:layout_width="wrap_content"
+                android:layout_width="311dp"
                 android:layout_height="wrap_content"
-                android:text="Email"
+                android:layout_marginTop="24dp"
+                android:text="Email:"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Email"
+                android:id="@+id/TB_EmailU"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
                 android:background="@drawable/redondo_borde"
@@ -70,110 +72,127 @@
 
             <TextView
                 android:id="@+id/LB_NombreU"
-                android:layout_width="wrap_content"
+                android:layout_width="311dp"
                 android:layout_height="wrap_content"
-                android:text="Nombre"
+                android:layout_marginTop="24dp"
+                android:text="Nombre:"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Email2"
+                android:id="@+id/TB_NombreU"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
                 android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="Nombre"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_ApPatU"
-                android:layout_width="wrap_content"
+                android:layout_width="311dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Apellido Paterno"
+                android:layout_marginTop="24dp"
+                android:text="Apellido Paterno:"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Email3"
+                android:id="@+id/TB_ApPatU"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
                 android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="Apellido"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
-                android:id="@+id/LB_ApMat"
-                android:layout_width="wrap_content"
+                android:id="@+id/LB_ApMatU"
+                android:layout_width="311dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Apellido Materno"
+                android:layout_marginTop="24dp"
+                android:text="Apellido Materno:"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Email4"
+                android:id="@+id/TB_ApMatU"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
                 android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="Apellido"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_UsuarioU"
-                android:layout_width="wrap_content"
+                android:layout_width="311dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Usuario"
+                android:layout_marginTop="24dp"
+                android:text="Usuario:"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Email5"
+                android:id="@+id/TB_UsuarioU"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
                 android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="Usuario"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_ContraseñaU"
-                android:layout_width="wrap_content"
+                android:layout_width="311dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Contraseña"
+                android:layout_marginTop="24dp"
+                android:text="Contraseña:"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Email6"
+                android:id="@+id/TB_ContraseñaU"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
                 android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/LB_ConfirmarContraU"
-                android:layout_width="wrap_content"
+                android:layout_width="311dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Confirmar Contraseña"
+                android:layout_marginTop="24dp"
+                android:text="Confirmar Contraseña:"
                 android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/TB_Email7"
+                android:id="@+id/TB_ConfirmarU"
                 android:layout_width="311dp"
                 android:layout_height="48dp"
                 android:background="@drawable/redondo_borde"
                 android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPassword"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/lbl_Fotografia"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Fotografias:"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/btn_FotosPM"
+                android:layout_width="311dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:background="@drawable/redondo_verde"
+                android:text="Adjuntar" />
 
         </LinearLayout>
     </ScrollView>
@@ -197,13 +216,17 @@
 
     <Button
         android:id="@+id/Btn_Registro"
-        android:layout_width="296dp"
-        android:layout_height="61dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="11dp"
         android:background="@drawable/redondo_verde"
-        android:onClick="onClick"
-        android:text="Register"
+        android:onClick="onClickRegistrar"
+        android:text="Registrar"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="43dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView44"
