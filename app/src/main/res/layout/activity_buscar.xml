@@ -117,6 +117,7 @@
         android:contentDescription="busca"
         android:scaleX="1.5"
         android:scaleY="1.5"
+        android:onClick="onClickBuscar"
         app:layout_constraintBottom_toBottomOf="@+id/materialToolbar"
         app:layout_constraintEnd_toEndOf="@+id/materialToolbar"
         app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
