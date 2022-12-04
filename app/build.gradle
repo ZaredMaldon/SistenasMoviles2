@@ -4,6 +4,7 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.google.gms.google-services'
 }
+apply plugin:'kotlin-android-extensions'
 
 android {
     compileSdk 33
@@ -51,8 +52,12 @@ dependencies {
     // To use constraintlayout in compose
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:26.0.0')
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
+
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"

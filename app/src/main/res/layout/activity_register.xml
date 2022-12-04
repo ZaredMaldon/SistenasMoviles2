@@ -183,7 +183,7 @@
                 android:layout_width="311dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Fotografias:"
+                android:text="Selecciona tu Imagen:"
                 android:textSize="24sp" />
 
             <Button
@@ -192,7 +192,9 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:background="@drawable/redondo_verde"
-                android:text="Adjuntar" />
+                android:text="Adjuntar"
+                android:onClick="onClickAdjuntar"
+                />
 
         </LinearLayout>
     </ScrollView>

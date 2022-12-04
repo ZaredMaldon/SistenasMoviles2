@@ -21,7 +21,8 @@ class UsuarioController() : AppCompatActivity() {
         apPat: String,
         apMat: String,
         usuario: String,
-        contraseña: String
+        contraseña: String,
+        image:String
     ) {
 
         database = FirebaseDatabase.getInstance()
@@ -40,6 +41,7 @@ class UsuarioController() : AppCompatActivity() {
                     userBD.child("ApellidoMaterno").setValue(apMat)
                     userBD.child("Usuario").setValue(usuario)
                     userBD.child("Password").setValue(contraseña)
+                    userBD.child("image").setValue(image)
                     action()
                 }
             }
