@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sistemasmoviles.Model.Message
 import com.example.sistemasmoviles.R
 
-class MessageController: RecyclerView.Adapter<MessageController.MessageViewHolder>() {
+class MessageController(private val user: String): RecyclerView.Adapter<MessageController.MessageViewHolder>() {
     private var messages: List<Message> = emptyList()
 
     fun setData(list: List<Message>){

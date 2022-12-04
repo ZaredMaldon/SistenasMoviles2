@@ -114,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:onClick="newChat"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="@+id/toolbar8"
         app:layout_constraintTop_toTopOf="parent" />

@@ -55,8 +55,6 @@ class ActivityChats : AppCompatActivity() {
     }
 
     private fun initViews(){
-        var newChatButton:Button = findViewById(R.id.newChatButton)
-        newChatButton.setOnClickListener { newChat() }
 
         val listChatsRecyclerView = findViewById<RecyclerView>(R.id.listChatsRecyclerView)
         listChatsRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -94,9 +92,10 @@ class ActivityChats : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun newChat(){
+    fun newChat(view: View) {
+
         val chatId = UUID.randomUUID().toString()
-        val otherUser = "juan@hotmail.com"
+        val otherUser = "zared@gmail.com"
         val users = listOf(user, otherUser)
 
         val chat = Chat(
@@ -113,6 +112,7 @@ class ActivityChats : AppCompatActivity() {
         intent.putExtra("chatId", chatId)
         intent.putExtra("user", user)
         startActivity(intent)
+
     }
 
     fun onClickHome(view: View) {
