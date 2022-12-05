@@ -4,13 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sistemasmoviles.Controller.ChatController
-import com.example.sistemasmoviles.Controller.PublicacionController
 import com.example.sistemasmoviles.Model.Chat
-import com.example.sistemasmoviles.Model.Publicacion
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -25,7 +22,7 @@ class ActivityChats : AppCompatActivity() {
     private lateinit var mDataBase: DatabaseReference;
 
     private var db = Firebase.firestore
-    private var user: String = null.toString();
+    private var user: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +37,10 @@ class ActivityChats : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
                     user = snapshot.child("Email").value.toString()
+
+                    if (user.isNotEmpty()){
+                        initViews()
+                    }
                 }
             }
 
@@ -47,11 +48,6 @@ class ActivityChats : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-
-        if (user.isNotEmpty()){
-            initViews()
-        }
-
     }
 
     private fun initViews(){

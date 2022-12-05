@@ -69,8 +69,9 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar8"
-        android:layout_width="420dp"
-        android:layout_height="86dp"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="-20dp"
         android:background="@drawable/corner_radius"
         android:minHeight="?attr/actionBarSize"
         android:rotation="0"
@@ -78,6 +79,7 @@
         android:rotationY="0"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,16 +109,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar8"
         tools:listitem="@layout/chat_view" />
-
-    <Button
-        android:id="@+id/newChatButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:onClick="newChat"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar8"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
