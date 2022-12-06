@@ -17,7 +17,7 @@ class ActivityPublicaciones : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var userFirebase: FirebaseUser
 
-    private lateinit var mDataBase: DatabaseReference;
+    private lateinit var mDataBase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class ActivityPublicaciones : AppCompatActivity() {
                     var nombre = snapshot.child("Name").value.toString()
                     var apellidoP = snapshot.child("ApellidoPaterno").value.toString()
                     var apellidoM = snapshot.child("ApellidoMaterno").value.toString()
-                    textNombre.text = nombre + " " + apellidoP + " " + apellidoM;
+                    textNombre.text = nombre + " " + apellidoP + " " + apellidoM
 
                 }
             }

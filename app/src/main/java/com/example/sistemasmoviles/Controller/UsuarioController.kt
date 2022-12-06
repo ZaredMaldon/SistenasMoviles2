@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class UsuarioController() : AppCompatActivity() {
+class UsuarioController : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var dbReference: DatabaseReference

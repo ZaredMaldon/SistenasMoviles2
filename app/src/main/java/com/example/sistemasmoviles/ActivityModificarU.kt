@@ -27,7 +27,7 @@ class ActivityModificarU : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var userFirebase: FirebaseUser
 
-    private lateinit var mDataBase: DatabaseReference;
+    private lateinit var mDataBase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +83,7 @@ class ActivityModificarU : AppCompatActivity() {
 
         if (!TextUtils.isEmpty(nombreU) && !TextUtils.isEmpty(emailU) && !TextUtils.isEmpty(apellidoP) && !TextUtils.isEmpty(apellidoM) && !TextUtils.isEmpty(usuarioU) && !TextUtils.isEmpty(contraseñaU)) {//revisamos que no estan vacios
             if(contraseñaU == confirmar) {
-                var db = UsuarioController();
+                var db = UsuarioController()
                 db.modifyAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU)
                 Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
             }

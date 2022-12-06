@@ -17,6 +17,7 @@
         android:theme="@style/Theme.SistemasMoviles"
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
+
         <activity
             android:name=".ActivityChat"
             android:exported="false" >

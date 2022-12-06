@@ -19,16 +19,17 @@ import retrofit2.Callback
 
 class ActivityBuscar : AppCompatActivity() {
     private lateinit var publicacionController:PublicacionController
-    private var mAdapter: PublicacionController? = null;
-    private lateinit var mRecyclerView: RecyclerView;
+    private var mAdapter: PublicacionController? = null
+    private lateinit var mRecyclerView: RecyclerView
+
     //private var mPublicacionesList = ArrayList<Publicacion>();
-    private lateinit var mDataBase: DatabaseReference;
+    private lateinit var mDataBase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar)
 
-        mDataBase = FirebaseDatabase.getInstance().reference;
+        mDataBase = FirebaseDatabase.getInstance().reference
         getPublicaciones()
        // mRecyclerView = findViewById<RecyclerView>(R.id.recyclerViewPublis);
        // mRecyclerView.layoutManager = LinearLayoutManager(this)

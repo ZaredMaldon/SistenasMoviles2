@@ -3,10 +3,6 @@ package com.example.sistemasmoviles
 import android.app.Application
 
 class UserApplication:Application() {
-    companion object{
-    }
+    companion object
 
-    override fun onCreate() {
-        super.onCreate()
-    }
 }

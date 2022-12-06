@@ -17,9 +17,9 @@ import java.util.*
 
 class ActivityChats : AppCompatActivity() {
 
-    private lateinit var firebaseAuth: FirebaseAuth;
-    private lateinit var userFirebase: FirebaseUser;
-    private lateinit var mDataBase: DatabaseReference;
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var userFirebase: FirebaseUser
+    private lateinit var mDataBase: DatabaseReference
 
     private var db = Firebase.firestore
     private var user: String = ""

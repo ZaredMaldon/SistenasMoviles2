@@ -45,7 +45,7 @@ class ActivityRegister : AppCompatActivity() {
 
         if (!TextUtils.isEmpty(nombreU) && !TextUtils.isEmpty(emailU) && !TextUtils.isEmpty(apellidoP) && !TextUtils.isEmpty(apellidoM) && !TextUtils.isEmpty(usuarioU) && !TextUtils.isEmpty(contraseñaU)) {//revisamos que no estan vacios
             if(contraseñaU == confirmar) {
-                var db = UsuarioController();
+                var db = UsuarioController()
                 db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU)
                 Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
             }
