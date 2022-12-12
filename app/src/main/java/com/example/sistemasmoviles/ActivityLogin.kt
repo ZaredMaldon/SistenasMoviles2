@@ -23,10 +23,6 @@ class ActivityLogin : AppCompatActivity() {
         txtUser=findViewById(R.id.TB_EmailLogin)
         txtPassword=findViewById(R.id.TB_PasswordLogin)
         auth=FirebaseAuth.getInstance()
-
-
-
-
     }
 
     fun onClickAbReg(view: View) { //cambiar a pantalla de registro

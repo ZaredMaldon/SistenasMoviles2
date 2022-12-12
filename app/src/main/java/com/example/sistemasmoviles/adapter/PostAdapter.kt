@@ -11,7 +11,7 @@ class PostAdapter(private val postsList: List<Respuesta>) : RecyclerView.Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val layoutInflater=LayoutInflater.from(parent.context)
-        return PostViewHolder(layoutInflater.inflate(R.layout.item_publicaciones,parent,false))
+        return PostViewHolder(layoutInflater.inflate(R.layout.item_publicaciones,parent,false),parent.context)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {

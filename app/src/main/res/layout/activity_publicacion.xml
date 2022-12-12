@@ -146,6 +146,11 @@
                 android:onClick="onClickAdjuntar"
                 android:text="Adjuntar" />
 
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/carousel"
+                android:layout_width="375dp"
+                android:layout_height="300dp" />
+
             <TextView
                 android:id="@+id/lbl_Descripcion"
                 android:layout_width="match_parent"

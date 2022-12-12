@@ -30,11 +30,6 @@ class ActivityBuscar : AppCompatActivity() {
 
         mDataBase = FirebaseDatabase.getInstance().reference;
         getPublicaciones()
-       // mRecyclerView = findViewById<RecyclerView>(R.id.recyclerViewPublis);
-       // mRecyclerView.layoutManager = LinearLayoutManager(this)
-        //publicacionController=PublicacionController(null)
-
-
 
     }
 
