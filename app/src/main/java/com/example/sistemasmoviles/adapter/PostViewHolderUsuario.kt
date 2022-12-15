@@ -12,24 +12,41 @@ import com.example.sistemasmoviles.HTTP.Service
 import com.example.sistemasmoviles.Model.Respuesta
 import com.example.sistemasmoviles.Model.RespuestaImagen
 import com.example.sistemasmoviles.R
+import com.example.sistemasmoviles.databinding.ItemPublicacionesusuarioBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 
-class PostViewHolder(view:View,context:Context) :RecyclerView.ViewHolder(view){
-    val Nombre=view.findViewById<TextView>(R.id.tv_PublicacionName)
+@Suppress("DEPRECATION")
+class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
+    val binding = ItemPublicacionesusuarioBinding.bind(view)
+
+    /*val Nombre=view.findViewById<TextView>(R.id.tv_PublicacionName)
     val Edad=view.findViewById<TextView>(R.id.tv_PublicacionEdad)
     val Tipo=view.findViewById<TextView>(R.id.tv_PublicacionTipo)
     val likes=view.findViewById<TextView>(R.id.tv_PublicacionLikes)
-    val photo=view.findViewById<ImageView>(R.id.iv_Publiaciones)
-    val context = context
+    val photo=view.findViewById<ImageView>(R.id.iv_Publiaciones)*/
 
-    fun render(publicacion: Respuesta){
+    //val context = context
+
+    fun render(
+        publicacion: Respuesta,
+        onClickListener: (Respuesta) -> Unit,
+        onClickDelete: (Int) -> Unit,
+        getId: (Int) -> Unit
+    ){
         getimage(publicacion.id)
-        Nombre.text = publicacion.Nombre
-        Edad.text=publicacion.Edad
-        Tipo.text=publicacion.Tipo
-        likes.text= publicacion.MeGusta.toString()
+        binding.tvPublicacionName.text = publicacion.Nombre
+        binding.tvPublicacionEdad.text=publicacion.Edad
+        binding.tvPublicacionTipo.text=publicacion.Tipo
+        //Acciones
+        binding.btnEliminar.setOnClickListener {
+            onClickDelete(adapterPosition)
+            getId(publicacion.id)
+        }
+        itemView.setOnClickListener{
+            onClickListener(publicacion)
+        }
     }
 
     fun getimage(id: Int){
@@ -44,12 +61,12 @@ class PostViewHolder(view:View,context:Context) :RecyclerView.ViewHolder(view){
 
             override fun onResponse(call: Call<RespuestaImagen>, response: retrofit2.Response<RespuestaImagen>){
                 //Toast.makeText(context, "Entre a respuesta image", Toast.LENGTH_SHORT).show()
-                Picasso.with(context)
+                Picasso.with(binding.ivPubliaciones.context)
                     .load(response.body()!!.Url)//url
                     .error(R.mipmap.ic_launcher)
                     .fit()
                     .centerInside()
-                    .into(photo)
+                    .into(binding.ivPubliaciones)
             }
         })
     }

@@ -7,7 +7,7 @@ import com.example.sistemasmoviles.Model.Respuesta
 
 import com.example.sistemasmoviles.R
 
-class PostAdapter(private val postsList: List<Respuesta>) : RecyclerView.Adapter<PostViewHolder>(){
+class PostAdapter(private var postsList: List<Respuesta>) : RecyclerView.Adapter<PostViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val layoutInflater=LayoutInflater.from(parent.context)

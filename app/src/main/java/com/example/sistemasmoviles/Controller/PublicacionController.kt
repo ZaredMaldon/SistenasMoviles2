@@ -10,9 +10,11 @@ import com.android.volley.toolbox.StringRequest
 import com.example.sistemasmoviles.HTTP.RestEngine
 import com.example.sistemasmoviles.HTTP.Service
 import com.example.sistemasmoviles.Model.Publicacion
+import com.example.sistemasmoviles.Model.Respuesta
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
+import java.io.IOException
 
 
 class PublicacionController(var pub:Publicacion) {
@@ -62,45 +64,19 @@ class PublicacionController(var pub:Publicacion) {
         return permiso
     }
 
-    @SuppressLint("RestrictedApi")
-    fun update(id:Int): JsonObjectRequest{
-        // Inicializacion del Objeto JSON
-        val jsonObject= JSONObject()
-        jsonObject.put("Nombre",pub?.Nombre)
-        jsonObject.put("Edad",pub?.Edad)
-        jsonObject.put("Tipo",pub?.Tipo)
-        jsonObject.put("Descripcion",pub?.Descripcion)
-        jsonObject.put("MeGusta",pub?.MeGusta)
-        jsonObject.put("Estatus",pub?.Estatus)
-        jsonObject.put("Usuario",pub?.Usuario)
+    fun eliminar(id:Int):Boolean{//POST
+        var permiso = true
+        val service: Service = RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<Void> = service.deletePublicacion(id)
+        Log.e("id: ",id.toString())
+        try {
+            //Log.e("Delete:",result.execute().body().toString())
+            permiso=true
+        }catch (e:IOException){
+            Log.e("DeleteError:",e.toString())
+            permiso=false
+        }
 
-        //val queue = Volley.newRequestQueue(this)
-        val url="https://apipublicaciones.zambiaa.com/api/publicaciones/{$id}"
-        val stringRequest= JsonObjectRequest(
-            Request.Method.PUT,url,jsonObject,
-            Response.Listener { response ->
-                Log.i(PackageManagerCompat.LOG_TAG,"Response is: $response")
-            },
-            Response.ErrorListener {
-                    error->
-                error.printStackTrace()
-            })
-        return stringRequest
+        return permiso
     }
-
-    @SuppressLint("RestrictedApi")
-    fun delete(id:Int): StringRequest {
-        val url="https://apipublicaciones.zambiaa.com/api/publicaciones/{$id}"
-        val stringRequest= StringRequest(
-            Request.Method.DELETE,url,
-            Response.Listener { response ->
-                Log.i(PackageManagerCompat.LOG_TAG,"Response is: $response")
-            },
-            Response.ErrorListener {
-                    error->
-                error.printStackTrace()
-            })
-        return stringRequest
-    }
-
 }

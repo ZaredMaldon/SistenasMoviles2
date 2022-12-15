@@ -2,7 +2,10 @@ package com.example.sistemasmoviles
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,16 +21,17 @@ import retrofit2.Call
 import retrofit2.Callback
 
 class ActivityBuscar : AppCompatActivity() {
-    private lateinit var publicacionController:PublicacionController
-    private var mAdapter: PublicacionController? = null;
-    private lateinit var mRecyclerView: RecyclerView;
-    //private var mPublicacionesList = ArrayList<Publicacion>();
     private lateinit var mDataBase: DatabaseReference;
+    private lateinit var txtSearch:TextView
+    private lateinit var recyclerView:RecyclerView
+    private lateinit var lista:MutableList<Respuesta>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar)
-
+        recyclerView=findViewById<RecyclerView>(R.id.recyclerViewPublis)
+        txtSearch=findViewById(R.id.tv_Buscar)
         mDataBase = FirebaseDatabase.getInstance().reference;
         getPublicaciones()
 
@@ -36,6 +40,27 @@ class ActivityBuscar : AppCompatActivity() {
     fun getPublicaciones() {
         val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
         val result: Call<List<Respuesta>> = service.getPublicaciones()
+        Log.e("getPublicaciones",result.toString())
+        result.enqueue(object: Callback<List<Respuesta>> {
+
+            override fun onFailure(call: Call<List<Respuesta>>, t: Throwable){
+
+                Toast.makeText( this@ActivityBuscar,t.message,Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<List<Respuesta>>, response: retrofit2.Response<List<Respuesta>>){
+
+                //showData(response.body()!!)
+                lista = (response.body() as MutableList<Respuesta>?)!!
+                showData(lista)
+                Toast.makeText(this@ActivityBuscar,"OK",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+    fun getBusqueda(){
+        //var busqueda = Busqueda(txtSearch.text.toString())
+        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<List<Respuesta>> = service.getPublicaciones(txtSearch.text.toString())
 
         result.enqueue(object: Callback<List<Respuesta>> {
 
@@ -46,23 +71,28 @@ class ActivityBuscar : AppCompatActivity() {
 
             override fun onResponse(call: Call<List<Respuesta>>, response: retrofit2.Response<List<Respuesta>>){
 
-                showData(response.body()!!)
+                refresh(response.body()!!)
+
                 Toast.makeText(this@ActivityBuscar,"OK",Toast.LENGTH_LONG).show()
             }
         })
     }
 
     private fun showData(publi:List<Respuesta>){
-        val recyclerView=findViewById<RecyclerView>(R.id.recyclerViewPublis)
-        /*
-        recyclerView.layoutManager=LinearLayoutManager(this)
-        recyclerView.adapter = PostAdapter(getPublicaciones())*/
-        Toast.makeText(this@ActivityBuscar,"ENTRE",Toast.LENGTH_LONG).show()
+            recyclerView.apply{
+                layoutManager = LinearLayoutManager(this@ActivityBuscar)
+                adapter = PostAdapter(publi)
+
+            }
+    }
+
+    private fun refresh(publi:List<Respuesta>){
         recyclerView.apply{
             layoutManager = LinearLayoutManager(this@ActivityBuscar)
             adapter = PostAdapter(publi)
 
         }
+        recyclerView.adapter!!.notifyDataSetChanged()
     }
 
     fun onClickHome(view: View) {
@@ -81,6 +111,9 @@ class ActivityBuscar : AppCompatActivity() {
     }
 
     fun onClickBuscar(view: View) {//Buscar
-        //getPublicaciones(publicacionController.getAll(this)!!);
+        //getPublicaciones()
+        recyclerView.layoutManager!!.removeAllViews()
+        getBusqueda()
+        //Toast.makeText(this, txtSearch.text.toString(), Toast.LENGTH_SHORT).show()
     }
 }
