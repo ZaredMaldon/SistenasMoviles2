@@ -1,6 +1,7 @@
 package com.example.sistemasmoviles.adapter
 
 import android.content.Context
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -20,21 +21,17 @@ import retrofit2.Callback
 @Suppress("DEPRECATION")
 class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
     val binding = ItemPublicacionesusuarioBinding.bind(view)
+    val prefs = PreferenceManager.getDefaultSharedPreferences(binding.ivPubliaciones.context)
 
-    /*val Nombre=view.findViewById<TextView>(R.id.tv_PublicacionName)
-    val Edad=view.findViewById<TextView>(R.id.tv_PublicacionEdad)
-    val Tipo=view.findViewById<TextView>(R.id.tv_PublicacionTipo)
-    val likes=view.findViewById<TextView>(R.id.tv_PublicacionLikes)
-    val photo=view.findViewById<ImageView>(R.id.iv_Publiaciones)*/
-
-    //val context = context
 
     fun render(
         publicacion: Respuesta,
         onClickListener: (Respuesta) -> Unit,
         onClickDelete: (Int) -> Unit,
+        onClickUpdate:(Int) -> Unit,
         getId: (Int) -> Unit
     ){
+        //prefs.getInt("idPublicacionEdit",0)
         getimage(publicacion.id)
         binding.tvPublicacionName.text = publicacion.Nombre
         binding.tvPublicacionEdad.text=publicacion.Edad
@@ -43,6 +40,13 @@ class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
         binding.btnEliminar.setOnClickListener {
             onClickDelete(adapterPosition)
             getId(publicacion.id)
+        }
+        binding.btnEditar.setOnClickListener{
+            onClickUpdate(adapterPosition)
+
+            val editor = prefs.edit()
+            editor.putInt("idPublicacionEdit",publicacion.id)
+            editor.apply()
         }
         itemView.setOnClickListener{
             onClickListener(publicacion)

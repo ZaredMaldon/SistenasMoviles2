@@ -2,6 +2,7 @@ package com.example.sistemasmoviles.HTTP
 
 import com.example.sistemasmoviles.Model.*
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface Service {
@@ -11,7 +12,7 @@ interface Service {
     fun getPublicaciones(): Call<List<Respuesta>>
 
     @GET("publicaciones/{buscarpor}")
-    fun getPublicaciones(@Path("buscarpor") buscarpor:String): Call<List<Respuesta>>
+    suspend fun getPublicaciones(@Path("buscarpor") buscarpor: String?): Response<List<Respuesta>>
 
     @GET("publicaciones/user/{Usuario}")
     fun getPublicacionByUser(@Path("Usuario") Usuario: String): Call<List<Respuesta>>
@@ -23,8 +24,9 @@ interface Service {
     @POST("publicaciones")
     fun setPubli(@Body publiData: Publicacion):Call<Int>
 
+    @Headers("Content-Type: application/json")
     @PUT("publicaciones/{id}")
-    fun editPubli(@Path("id") id:Int):Call<List<Respuesta>>
+    fun editPubli(@Path("id") id:Int,@Body publiData: Publicacion):Call<Int>
 
     @DELETE("publicaciones/{id}")
     fun deletePublicacion(@Path("id") id: Int):Call<Void>

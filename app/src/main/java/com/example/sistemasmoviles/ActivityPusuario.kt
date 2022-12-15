@@ -32,18 +32,20 @@ import java.io.IOException
 
 
 class ActivityPusuario : AppCompatActivity() {
-    var listaP:MutableList<Respuesta> = arrayListOf()
+
     private lateinit var textNombre: TextView
     private lateinit var textCorreo: TextView
     private lateinit var imageview: ImageView
 
+    var listaP:MutableList<Respuesta> = arrayListOf()
     private lateinit var binding: ActivityPusuarioBinding
+    private lateinit var adapterUsuario: PostAdapterUsuario
 
     private lateinit var firebaseAuth: FirebaseAuth;
     private lateinit var userFirebase: FirebaseUser;
 
     private lateinit var mDataBase: DatabaseReference;
-    private lateinit var adapterUsuario: PostAdapterUsuario
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,11 +126,18 @@ class ActivityPusuario : AppCompatActivity() {
             postsList = listaP,
             onClickListener = {publicacion -> onItemSelected(publicacion)},
             onClickDelete = {position -> onDeletedItem(position)},
+            onClickUpdate = {position -> onUpdateItem(position)},
             getId = {id -> deleteById(id)}
         )
         val manager = LinearLayoutManager(this@ActivityPusuario)
         binding.rvPublicacionesU.layoutManager = manager
         binding.rvPublicacionesU.adapter = adapterUsuario
+    }
+
+    private fun onUpdateItem(position: Int) {
+        Log.i("Posicion:",position.toString())
+        val change = Intent(this,ActivityEditarPublicacion::class.java)
+        startActivity(change)
     }
 
     private fun deleteById(id: Int) {
@@ -148,18 +157,6 @@ class ActivityPusuario : AppCompatActivity() {
 
 
         Toast.makeText(this, "id: "+id.toString(), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun showData(publi:List<Respuesta>){
-        val recyclerView=findViewById<RecyclerView>(R.id.rv_publicacionesU)
-        Toast.makeText(this@ActivityPusuario,"ENTRE", Toast.LENGTH_LONG).show()
-        recyclerView.apply{
-            layoutManager = LinearLayoutManager(this@ActivityPusuario)
-            adapter = PostAdapter(
-                publi
-            )
-
-        }
     }
 
     private fun onDeletedItem(position: Int) {

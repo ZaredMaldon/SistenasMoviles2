@@ -2,6 +2,7 @@ package com.example.sistemasmoviles.Controller
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.util.LogPrinter
 import androidx.core.content.PackageManagerCompat
 import com.android.volley.Request
 import com.android.volley.Response
@@ -64,19 +65,21 @@ class PublicacionController(var pub:Publicacion) {
         return permiso
     }
 
-    fun eliminar(id:Int):Boolean{//POST
-        var permiso = true
-        val service: Service = RestEngine.getRestEngine().create(Service::class.java)
-        val result: Call<Void> = service.deletePublicacion(id)
-        Log.e("id: ",id.toString())
-        try {
-            //Log.e("Delete:",result.execute().body().toString())
-            permiso=true
-        }catch (e:IOException){
-            Log.e("DeleteError:",e.toString())
-            permiso=false
-        }
+    fun editar(id:Int){
+        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<Int> = service.editPubli(id,pub)
 
-        return permiso
+        result.enqueue(object: Callback<Int> {
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Log.e("No Realizado",t.message.toString())
+            }
+
+            override fun onResponse(call: Call<Int>, response: retrofit2.Response<Int>) {
+                if(response.isSuccessful){
+                    Log.i("Realizado","Cambio Realizado con exito")
+                }
+            }
+        })
     }
+
 }

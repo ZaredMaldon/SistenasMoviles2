@@ -10,8 +10,10 @@ class PostAdapterUsuario(
     private var postsList: List<Respuesta>,
     private val onClickListener:(Respuesta)->Unit,
     private val onClickDelete:(Int) -> Unit,
+    private val onClickUpdate:(Int) -> Unit,
     private val getId:(Int)-> Unit
     ) : RecyclerView.Adapter<PostViewHolderUsuario>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolderUsuario {
         val layoutInflater= LayoutInflater.from(parent.context)
         return PostViewHolderUsuario(layoutInflater.inflate(R.layout.item_publicacionesusuario,parent,false))
@@ -19,7 +21,7 @@ class PostAdapterUsuario(
 
     override fun onBindViewHolder(holder: PostViewHolderUsuario, position: Int) {
         val item = postsList[position]
-        holder.render(item,onClickListener,onClickDelete,getId)
+        holder.render(item,onClickListener,onClickDelete,onClickUpdate,getId)
     }
 
     override fun getItemCount(): Int = postsList.size
