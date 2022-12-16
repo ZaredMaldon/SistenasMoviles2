@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar6"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="-10dp"
+        android:background="@drawable/redondo_verde"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="Volver"
+        android:onClick="onClickVolver"
+        android:src="@drawable/arrow_back"
+        app:tint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="17dp"
+        android:text="Registrate!"
+        android:textColor="#FFFFFF"
+        android:textSize="45sp"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView43"
+        android:layout_alignStart="@+id/textView43"
+        android:layout_marginTop="6dp"
+        android:text="Una adopcion un acto de amor"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+    <Button
+        android:id="@+id/Btn_Registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/redondo_verde"
+        android:onClick="onClickRegistrar"
+        android:text="Registrar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Btn_Registro"
+        android:layout_below="@+id/materialToolbar6"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/LB_EmailU"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Email:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_EmailU"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/LB_NombreU"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Nombre:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_NombreU"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/LB_ApPatU"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Apellido Paterno:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_ApPatU"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Apellido"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/LB_ApMatU"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Apellido Materno:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_ApMatU"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Apellido"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/LB_UsuarioU"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Usuario:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_UsuarioU"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Usuario"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/LB_ContraseñaU"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Contraseña:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_ContraseñaU"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/LB_ConfirmarContraU"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Confirmar Contraseña:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_ConfirmarU"
+                android:layout_width="311dp"
+                android:layout_height="48dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/lbl_Fotografia"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Fotografias:"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/btn_FotosPM"
+                android:layout_width="311dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:background="@drawable/redondo_verde"
+                android:text="Adjuntar" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

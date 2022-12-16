@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="-10dp"
+        android:background="@drawable/redondo_verde"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/materialToolbar3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="117dp"
+        android:text="Bienvenido!"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="136dp"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="20dp"
+        android:background="#00FFFFFF"
+        android:onClick="onClickAbReg"
+        android:text="Click Aquí"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView26"
+        android:layout_alignBottom="@+id/materialToolbar3"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="77dp"
+        android:text="Aun no tienes cuenta? Registrate "
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/LB_EmailLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/materialToolbar3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="290dp"
+        android:text="Email"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/TB_EmailLogin"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LB_EmailLogin"
+        android:layout_alignStart="@+id/LB_EmailLogin"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/LB_PasswordLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TB_EmailLogin"
+        android:layout_alignStart="@+id/TB_EmailLogin"
+        android:layout_marginTop="36dp"
+        android:text="Contraseña"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/TB_PasswordLogin"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LB_PasswordLogin"
+        android:layout_alignStart="@+id/LB_PasswordLogin"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="textPassword"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/Btn_Login"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@+id/TB_PasswordLogin"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/redondo_verde"
+        android:onClick="onClickLogin"
+        android:text="Login" />
+
+</RelativeLayout>
