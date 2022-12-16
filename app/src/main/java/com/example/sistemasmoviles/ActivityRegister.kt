@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.example.sistemasmoviles.Controller.UsuarioController
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.squareup.picasso.Picasso
 
 
 class ActivityRegister : AppCompatActivity() {
@@ -63,6 +64,7 @@ class ActivityRegister : AppCompatActivity() {
                         val hashMap =
                             HashMap<String, String>()
                         hashMap["link"] = java.lang.String.valueOf(uri)
+
                         //myRef.setValue(hashMap)
                         Log.d("Mensaje", "Se subió correctamente")
                     }

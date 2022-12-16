@@ -82,8 +82,6 @@ class ActivityPusuario : AppCompatActivity() {
                         .centerInside()
                         .into(imageview)
 
-
-
                 }
             }
 
@@ -136,8 +134,8 @@ class ActivityPusuario : AppCompatActivity() {
 
     private fun onUpdateItem(position: Int) {
         Log.i("Posicion:",position.toString())
-        val change = Intent(this,ActivityEditarPublicacion::class.java)
-        startActivity(change)
+        /*val change = Intent(this,ActivityEditarPublicacion::class.java)
+        startActivity(change)*/
     }
 
     private fun deleteById(id: Int) {
@@ -168,7 +166,10 @@ class ActivityPusuario : AppCompatActivity() {
     }
 
     private fun onItemSelected(respuesta:Respuesta) {
-        Toast.makeText(this, respuesta.Nombre, Toast.LENGTH_SHORT).show()
+        //cuando selecciona
+        val change = Intent(this,ActivityPmascota::class.java)
+        change.putExtra("idPubli",respuesta.id)
+        startActivity(change)
     }
 
     //Botones

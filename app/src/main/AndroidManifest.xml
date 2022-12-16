@@ -37,6 +37,9 @@
             android:name=".ActivityPublicacion"
             android:exported="false" />
         <activity
+            android:name=".ActivityEditarPublicacion"
+            android:exported="false" />
+        <activity
             android:name=".ActivityRegister"
             android:exported="false" />
         <activity

@@ -11,6 +11,9 @@ interface Service {
     @GET("publicaciones")
     fun getPublicaciones(): Call<List<Respuesta>>
 
+    @GET("publicaciones/id/{id}")
+    fun getPublicacionesById(@Path("id") id: Int): Call<Respuesta>
+
     @GET("publicaciones/{buscarpor}")
     suspend fun getPublicaciones(@Path("buscarpor") buscarpor: String?): Response<List<Respuesta>>
 
@@ -40,4 +43,7 @@ interface Service {
     @Headers("Content-Type: application/json")
     @POST("imagenes")
     fun setImage(@Body imageData:ImagenPubli):Call<Int>
+    //Imagenes de la publicacion
+    @GET("publicaciones/images/{id}")
+    fun getPublicacionImages(@Path("id") id: Int): Call<List<RespuestaImagen>>
 }

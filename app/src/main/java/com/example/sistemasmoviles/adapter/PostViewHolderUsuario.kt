@@ -3,6 +3,7 @@ package com.example.sistemasmoviles.adapter
 import android.content.Context
 import android.preference.PreferenceManager
 import android.util.Log
+import android.util.LogPrinter
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,7 +22,7 @@ import retrofit2.Callback
 @Suppress("DEPRECATION")
 class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
     val binding = ItemPublicacionesusuarioBinding.bind(view)
-    val prefs = PreferenceManager.getDefaultSharedPreferences(binding.ivPubliaciones.context)
+    //val prefs = PreferenceManager.getDefaultSharedPreferences(binding.ivPubliaciones.context)
 
 
     fun render(
@@ -44,9 +45,6 @@ class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
         binding.btnEditar.setOnClickListener{
             onClickUpdate(adapterPosition)
 
-            val editor = prefs.edit()
-            editor.putInt("idPublicacionEdit",publicacion.id)
-            editor.apply()
         }
         itemView.setOnClickListener{
             onClickListener(publicacion)

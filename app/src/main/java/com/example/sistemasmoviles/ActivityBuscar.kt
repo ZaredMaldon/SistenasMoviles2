@@ -59,16 +59,29 @@ class ActivityBuscar : AppCompatActivity(){
     }
 
     private fun initRecyclerView(){
-        adapterUsuario = PostAdapter(postsList = listaP)
+        adapterUsuario = PostAdapter(
+            postsList = listaP,
+            onClickListener = {
+                    publicacion -> onItemSelected(publicacion)
+            }
+        )
         val manager = LinearLayoutManager(this@ActivityBuscar)
         binding.recyclerViewPublis.layoutManager = manager
         binding.recyclerViewPublis.adapter = adapterUsuario
     }
 
+    private fun onItemSelected(publicacion: Respuesta) {
+        val change = Intent(this,ActivityPmascota::class.java)
+        change.putExtra("idPubli",publicacion.id)
+        startActivity(change)
+    }
+
     fun getPublicaciones() {
         val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
         val result: Call<List<Respuesta>> = service.getPublicaciones()
+
         Log.e("getPublicaciones",result.toString())
+
         result.enqueue(object: Callback<List<Respuesta>> {
 
             override fun onFailure(call: Call<List<Respuesta>>, t: Throwable){
@@ -77,9 +90,9 @@ class ActivityBuscar : AppCompatActivity(){
             }
 
             override fun onResponse(call: Call<List<Respuesta>>, response: retrofit2.Response<List<Respuesta>>){
-
                 //showData(response.body()!!)
                 listaP = (response.body() as MutableList<Respuesta>?)!!
+
                 initRecyclerView()
                 Toast.makeText(this@ActivityBuscar,"OK",Toast.LENGTH_LONG).show()
             }

@@ -14,14 +14,20 @@ import android.widget.Toast
 import com.android.volley.toolbox.Volley
 import com.example.sistemasmoviles.Controller.ImagenController
 import com.example.sistemasmoviles.Controller.PublicacionController
+import com.example.sistemasmoviles.HTTP.RestEngine
+import com.example.sistemasmoviles.HTTP.Service
 import com.example.sistemasmoviles.Model.ImagenPubli
 import com.example.sistemasmoviles.Model.Publicacion
+import com.example.sistemasmoviles.Model.Respuesta
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
+import retrofit2.Call
+import retrofit2.Callback
+import java.io.IOException
 
 class ActivityEditarPublicacion : AppCompatActivity() {
     private lateinit var publicacionController:PublicacionController
@@ -31,16 +37,21 @@ class ActivityEditarPublicacion : AppCompatActivity() {
     private lateinit var txtDescripcion:EditText
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var userFirebase: FirebaseUser
+    private var idPubli=0
     private val fileResult = 1
     private val links = mutableListOf<String>()
-    val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-    val idPublicacion = prefs.getInt("idPublicacionEdit",0)
-
+    //val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+    //val idPublicacion = prefs.getInt("idPublicacionEdit",0)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editarpublicacion)
+
+        //Traer datos de otro activity
+        intent.getIntExtra("idPubli",0).let {
+            idPubli=it
+        }
 
         txtNombre=findViewById(R.id.TB_NombrePM)
         txtEdad=findViewById(R.id.TB_EdadPM)
@@ -49,9 +60,37 @@ class ActivityEditarPublicacion : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         userFirebase = firebaseAuth.currentUser!!
+        getPublicacion()
+    }
 
+    private fun getPublicacion() {
+        Toast.makeText(this, idPubli, Toast.LENGTH_SHORT).show()
+        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<Respuesta> = service.getPublicacionesById(idPubli)
+
+        result.enqueue(object: Callback<Respuesta> {
+
+            override fun onFailure(call: Call<Respuesta>, t: Throwable){
+
+                Toast.makeText( this@ActivityEditarPublicacion,t.message,Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<Respuesta>, response: retrofit2.Response<Respuesta>){
+                val publicacion = response.body()
+                if(response.isSuccessful){
+                    /*for (respuesta in publicacion!!){
+                        Toast.makeText(this@ActivityEditarPublicacion, "Entre a respuesta", Toast.LENGTH_SHORT).show()
+                        txtNombre.setText(respuesta.Nombre)
+                    }*/
+                }
+
+
+                Toast.makeText(this@ActivityEditarPublicacion,"OK",Toast.LENGTH_LONG).show()
+            }
+        })
 
     }
+
     private fun end(){
         txtNombre.setText("")
     }
@@ -68,7 +107,7 @@ class ActivityEditarPublicacion : AppCompatActivity() {
 
         /*API*/
         /* Publicacion */
-        PublicacionController(publi).editar(idPublicacion)
+        PublicacionController(publi).editar(7)
 
     }
 

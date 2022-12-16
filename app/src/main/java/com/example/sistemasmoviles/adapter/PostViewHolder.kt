@@ -20,12 +20,18 @@ import retrofit2.Callback
 class PostViewHolder(view:View,context:Context) :RecyclerView.ViewHolder(view){
     val binding = ItemPublicacionesBinding.bind(view)
 
-    fun render(publicacion: Respuesta){
+    fun render(publicacion: Respuesta,
+               onClickListener: (Respuesta) -> Unit
+    ){
         getimage(publicacion.id)
         binding.tvPublicacionName.text = publicacion.Nombre
         binding.tvPublicacionEdad.text=publicacion.Edad
         binding.tvPublicacionTipo.text=publicacion.Tipo
         binding.tvPublicacionLikes.text= publicacion.MeGusta.toString()
+        itemView.setOnClickListener{
+
+            onClickListener(publicacion)
+        }
     }
 
     fun getimage(id: Int){

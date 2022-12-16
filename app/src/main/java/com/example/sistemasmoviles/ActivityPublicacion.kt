@@ -31,6 +31,7 @@ class ActivityPublicacion : AppCompatActivity() {
     private lateinit var carousel:ImageCarousel
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var userFirebase: FirebaseUser
+    private var idPubli = ""
     private val fileResult = 1
     private val links = mutableListOf<String>()
     private val listaCorusel = mutableListOf<CarouselItem>()
@@ -39,6 +40,7 @@ class ActivityPublicacion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publicacion)
+
 
         txtNombre=findViewById(R.id.TB_NombrePM)
         txtEdad=findViewById(R.id.TB_EdadPM)
@@ -119,16 +121,10 @@ class ActivityPublicacion : AppCompatActivity() {
         /*DATOS DE LA PUBLICACION*/
         var publi=Publicacion(txtNombre.text.toString(),txtEdad.text.toString(),txtTipo.text.toString(),txtDescripcion.text.toString(), 20,1,userFirebase.uid)
 
-
-
         /*API*/
         /* Publicacion */
         var resultado=PublicacionController(publi).agregar()
-        /*val queue = Volley.newRequestQueue(this)
-        publicacionController= PublicacionController(publi)
-        var stringRequest=publicacionController.enviar()
-        queue.add(stringRequest)
-        end()*/
+
         if(resultado){
             /*Imagenes*/
             for(item in links){
