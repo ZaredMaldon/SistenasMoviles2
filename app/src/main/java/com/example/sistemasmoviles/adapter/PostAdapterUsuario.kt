@@ -10,7 +10,7 @@ class PostAdapterUsuario(
     private var postsList: List<Respuesta>,
     private val onClickListener:(Respuesta)->Unit,
     private val onClickDelete:(Int) -> Unit,
-    private val onClickUpdate:(Int) -> Unit,
+    private val onClickUpdate:(Respuesta) -> Unit,
     private val getId:(Int)-> Unit
     ) : RecyclerView.Adapter<PostViewHolderUsuario>() {
 

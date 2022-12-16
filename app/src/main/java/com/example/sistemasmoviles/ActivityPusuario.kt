@@ -93,11 +93,8 @@ class ActivityPusuario : AppCompatActivity() {
             val result = withContext(Dispatchers.IO){
                 listaP=getPublicacionesByUser()
                 initRecyclerView()
-                }
+            }
         }
-
-
-
 
     }
 
@@ -124,7 +121,7 @@ class ActivityPusuario : AppCompatActivity() {
             postsList = listaP,
             onClickListener = {publicacion -> onItemSelected(publicacion)},
             onClickDelete = {position -> onDeletedItem(position)},
-            onClickUpdate = {position -> onUpdateItem(position)},
+            onClickUpdate = {publicacion -> onUpdateItem(publicacion)},
             getId = {id -> deleteById(id)}
         )
         val manager = LinearLayoutManager(this@ActivityPusuario)
@@ -132,10 +129,10 @@ class ActivityPusuario : AppCompatActivity() {
         binding.rvPublicacionesU.adapter = adapterUsuario
     }
 
-    private fun onUpdateItem(position: Int) {
-        Log.i("Posicion:",position.toString())
-        /*val change = Intent(this,ActivityEditarPublicacion::class.java)
-        startActivity(change)*/
+    private fun onUpdateItem(publicacion:Respuesta) {
+        val change = Intent(this,editarPublicacion::class.java)
+        change.putExtra("idPubli",publicacion.id)
+        startActivity(change)
     }
 
     private fun deleteById(id: Int) {
@@ -154,7 +151,7 @@ class ActivityPusuario : AppCompatActivity() {
         })
 
 
-        Toast.makeText(this, "id: "+id.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Se la elimino publicacion id: "+id.toString(), Toast.LENGTH_SHORT).show()
     }
 
     private fun onDeletedItem(position: Int) {

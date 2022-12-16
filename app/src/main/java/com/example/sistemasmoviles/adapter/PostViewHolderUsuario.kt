@@ -29,7 +29,7 @@ class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
         publicacion: Respuesta,
         onClickListener: (Respuesta) -> Unit,
         onClickDelete: (Int) -> Unit,
-        onClickUpdate:(Int) -> Unit,
+        onClickUpdate:(Respuesta) -> Unit,
         getId: (Int) -> Unit
     ){
         //prefs.getInt("idPublicacionEdit",0)
@@ -43,7 +43,7 @@ class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
             getId(publicacion.id)
         }
         binding.btnEditar.setOnClickListener{
-            onClickUpdate(adapterPosition)
+            onClickUpdate(publicacion)
 
         }
         itemView.setOnClickListener{
