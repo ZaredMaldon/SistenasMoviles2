@@ -8,9 +8,6 @@ data class Publicacion(
     var Edad:String,
     var Tipo:String,
     var Descripcion:String,
-    var imagen1:Blob?,
-    var imagen2: Blob?,
-    var imagen3: Blob?,
     var MeGusta:Int,
     var Estatus:Int,
     var Usuario:String

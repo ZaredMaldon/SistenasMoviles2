@@ -47,15 +47,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_PublicacionEdad"
         tools:text="Tipo de Animal" />
 
-    <TextView
-        android:id="@+id/tv_PublicacionLikes"
+    <Button
+        android:id="@+id/btnEliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="40dp"
-        app:fontFamily="casual"
-        app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
-        app:layout_constraintTop_toBottomOf="@+id/tv_PublicacionTipo"
-        tools:text="480 likes" />
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/red"
+        android:text="Borrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones" />
+
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        android:backgroundTint="@color/color_resalte"
+        android:text=" Editar "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.969"
+        app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,9 @@
 package com.example.sistemasmoviles.adapter
 
 import android.content.Context
+import android.preference.PreferenceManager
 import android.util.Log
+import android.util.LogPrinter
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,24 +14,39 @@ import com.example.sistemasmoviles.HTTP.Service
 import com.example.sistemasmoviles.Model.Respuesta
 import com.example.sistemasmoviles.Model.RespuestaImagen
 import com.example.sistemasmoviles.R
-import com.example.sistemasmoviles.databinding.ItemPublicacionesBinding
+import com.example.sistemasmoviles.databinding.ItemPublicacionesusuarioBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 
-class PostViewHolder(view:View,context:Context) :RecyclerView.ViewHolder(view){
-    val binding = ItemPublicacionesBinding.bind(view)
+@Suppress("DEPRECATION")
+class PostViewHolderUsuario(view: View) : RecyclerView.ViewHolder(view) {
+    val binding = ItemPublicacionesusuarioBinding.bind(view)
+    //val prefs = PreferenceManager.getDefaultSharedPreferences(binding.ivPubliaciones.context)
 
-    fun render(publicacion: Respuesta,
-               onClickListener: (Respuesta) -> Unit
+
+    fun render(
+        publicacion: Respuesta,
+        onClickListener: (Respuesta) -> Unit,
+        onClickDelete: (Int) -> Unit,
+        onClickUpdate:(Respuesta) -> Unit,
+        getId: (Int) -> Unit
     ){
+        //prefs.getInt("idPublicacionEdit",0)
         getimage(publicacion.id)
         binding.tvPublicacionName.text = publicacion.Nombre
         binding.tvPublicacionEdad.text=publicacion.Edad
         binding.tvPublicacionTipo.text=publicacion.Tipo
-        binding.tvPublicacionLikes.text= publicacion.MeGusta.toString()
-        itemView.setOnClickListener{
+        //Acciones
+        binding.btnEliminar.setOnClickListener {
+            onClickDelete(adapterPosition)
+            getId(publicacion.id)
+        }
+        binding.btnEditar.setOnClickListener{
+            onClickUpdate(publicacion)
 
+        }
+        itemView.setOnClickListener{
             onClickListener(publicacion)
         }
     }

@@ -28,7 +28,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/Iv_PerfilImg_ini"
                 android:layout_width="319dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

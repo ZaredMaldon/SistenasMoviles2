@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityPublicacion">
-
+    tools:context=".editarPublicacion">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/EncabezadoPM"
         android:layout_width="0dp"
@@ -37,16 +36,16 @@
 
     <TextView
         android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="275dp"
+        android:layout_height="115dp"
         android:layout_marginStart="140dp"
         android:layout_marginTop="20dp"
-        android:text="Publica una nueva mascota!"
+        android:layout_marginEnd="100dp"
+        android:text="Cambios en la Publicacion"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/EncabezadoPM"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="@+id/EncabezadoPM"
         app:layout_constraintTop_toTopOf="@+id/EncabezadoPM"
         app:layout_constraintVertical_bias="0.4" />
@@ -130,28 +129,6 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/lbl_Fotografia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Fotografias:"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/Btn_FotosPM"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
-                android:background="@drawable/redondo_verde"
-                android:onClick="onClickAdjuntar"
-                android:text="Adjuntar" />
-
-            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-                android:id="@+id/carousel"
-                android:layout_width="375dp"
-                android:layout_height="300dp" />
-
-            <TextView
                 android:id="@+id/lbl_Descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,10 +156,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="11dp"
-        android:text="Publicar"
+        android:text="Editar"
         android:onClick="onClickPublicar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

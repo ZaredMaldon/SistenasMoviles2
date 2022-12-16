@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 
 class ActivityPublicaciones : AppCompatActivity() {
 
@@ -16,14 +18,18 @@ class ActivityPublicaciones : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var userFirebase: FirebaseUser
+    private lateinit var imageView:ImageView
 
-    private lateinit var mDataBase: DatabaseReference
+    private lateinit var mDataBase: DatabaseReference;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_publicaciones)
 
         textNombre = findViewById(R.id.textView3)
+        imageView = findViewById(R.id.Iv_PerfilImg_ini)
+
+
         firebaseAuth = FirebaseAuth.getInstance()
         userFirebase = firebaseAuth.currentUser!!
 
@@ -35,7 +41,13 @@ class ActivityPublicaciones : AppCompatActivity() {
                     var nombre = snapshot.child("Name").value.toString()
                     var apellidoP = snapshot.child("ApellidoPaterno").value.toString()
                     var apellidoM = snapshot.child("ApellidoMaterno").value.toString()
-                    textNombre.text = nombre + " " + apellidoP + " " + apellidoM
+                    textNombre.text = nombre + " " + apellidoP + " " + apellidoM;
+                    Picasso.with(this@ActivityPublicaciones)
+                        .load(snapshot.child("image").value.toString())
+                        .error(R.mipmap.ic_launcher)
+                        .fit()
+                        .centerInside()
+                        .into(imageView)
 
                 }
             }
