@@ -69,9 +69,7 @@ class editarPublicacion : AppCompatActivity() {
 
     }
 
-    private fun end(){
-        txtNombre.setText("")
-    }
+
 
     /*Botones*/
     fun onClickVolver(view: View) {
@@ -87,6 +85,7 @@ class editarPublicacion : AppCompatActivity() {
         /*API*/
         /* Publicacion */
         PublicacionController(publi).editar(idPubli)
+        Toast.makeText(this, "La publicacion se modifico correctamente", Toast.LENGTH_SHORT).show()
 
     }
 }
