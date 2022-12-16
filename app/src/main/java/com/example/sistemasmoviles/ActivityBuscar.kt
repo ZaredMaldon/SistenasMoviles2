@@ -38,7 +38,7 @@ class ActivityBuscar : AppCompatActivity(){
 
         mDataBase = FirebaseDatabase.getInstance().reference;
         initRecyclerView()
-        //getPublicaciones()
+        getPublicaciones()
 
     }
 
