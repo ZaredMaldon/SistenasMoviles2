@@ -1,21 +1,22 @@
 package com.example.sistemasmoviles
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Bundle
 import android.preference.PreferenceManager
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.sistemasmoviles.Controller.UsuarioController
-import com.example.sistemasmoviles.databinding.ActivityPublicacionBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import org.json.JSONObject
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 class ActivityLogin : AppCompatActivity() {
@@ -136,6 +137,14 @@ class ActivityLogin : AppCompatActivity() {
         }
     }
 
+    fun isPasswordValid(password: String): Boolean {
+        val regEx = "^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}\$"
+        val inputStr: CharSequence = password
+        val pattern: Pattern = Pattern.compile(regEx, Pattern.UNICODE_CASE)
+        val matcher: Matcher = pattern.matcher(inputStr)
+        return if (matcher.matches()) true else false
+    }
+
     fun onClickRegistrar(view: View) {//Registro
 
         var txtName: EditText =findViewById(R.id.TB_NombreU)
@@ -155,13 +164,17 @@ class ActivityLogin : AppCompatActivity() {
         var confirmar: String = txtConfirmar.text.toString()
 
         if (!TextUtils.isEmpty(nombreU) && !TextUtils.isEmpty(emailU) && !TextUtils.isEmpty(apellidoP) && !TextUtils.isEmpty(apellidoM) && !TextUtils.isEmpty(usuarioU) && !TextUtils.isEmpty(contraseñaU)) {//revisamos que no estan vacios
-            if(contraseñaU == confirmar) {
-                var db = UsuarioController()
-                db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU, image)
-                Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
-            }
+            if(isPasswordValid(contraseñaU))
+                if(contraseñaU == confirmar) {
+                    var db = UsuarioController()
+                    db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU, image)
+                    Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(this, "Las contraseñas son distintas", Toast.LENGTH_SHORT).show()
+                }
             else{
-                Toast.makeText(this, "Las contraseñas son distintas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Contraseña no valida", Toast.LENGTH_SHORT).show()
             }
         }
         else{

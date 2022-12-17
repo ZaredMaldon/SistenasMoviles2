@@ -93,7 +93,7 @@ class ActivityMenu : AppCompatActivity() {
     }
 
     fun onClickAdjuntar(view: View) {
-        //listaCorusel.clear()
+
         fileManager()
 
     }
@@ -109,7 +109,6 @@ class ActivityMenu : AppCompatActivity() {
         var txtEdad : EditText=findViewById(R.id.TB_EdadPM)
         var txtTipo : EditText=findViewById(R.id.TB_TipoPM)
         var txtDescripcion : EditText=findViewById(R.id.TB_DescripcionPM)
-        var listaCorusel = mutableListOf<CarouselItem>()
 
         /*API*/
         /* Publicacion */
@@ -119,7 +118,11 @@ class ActivityMenu : AppCompatActivity() {
         PublicacionController(publi).agregar(links,this@ActivityMenu)
         Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
 
-            supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
+        txtNombre.setText("")
+        txtEdad.setText("")
+        txtTipo.setText("")
+        txtDescripcion.setText("")
+        supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
 
     }
 
