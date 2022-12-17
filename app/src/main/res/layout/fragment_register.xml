@@ -220,6 +220,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"
                 android:background="@drawable/redondo_verde"
+                android:onClick="onClickAdjuntar"
                 android:text="Adjuntar" />
 
 

@@ -27,6 +27,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
             android:name=".editarPublicacion"
             android:exported="false" />
         <activity
@@ -45,9 +46,6 @@
         </activity>
         <activity
             android:name=".ActivityPublicacion"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityEditarPublicacion"
             android:exported="false" />
         <activity
             android:name=".ActivityRegister"

@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sistemasmoviles.Controller.UsuarioController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import org.json.JSONObject
@@ -142,7 +143,7 @@ class ActivityLogin : AppCompatActivity() {
         val inputStr: CharSequence = password
         val pattern: Pattern = Pattern.compile(regEx, Pattern.UNICODE_CASE)
         val matcher: Matcher = pattern.matcher(inputStr)
-        return if (matcher.matches()) true else false
+        return matcher.matches()
     }
 
     fun onClickRegistrar(view: View) {//Registro
@@ -166,6 +167,7 @@ class ActivityLogin : AppCompatActivity() {
         if (!TextUtils.isEmpty(nombreU) && !TextUtils.isEmpty(emailU) && !TextUtils.isEmpty(apellidoP) && !TextUtils.isEmpty(apellidoM) && !TextUtils.isEmpty(usuarioU) && !TextUtils.isEmpty(contraseñaU)) {//revisamos que no estan vacios
             if(isPasswordValid(contraseñaU))
                 if(contraseñaU == confirmar) {
+
                     var db = UsuarioController()
                     db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU, image)
                     Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
@@ -182,4 +184,5 @@ class ActivityLogin : AppCompatActivity() {
         }
 
     }
+
 }

@@ -42,7 +42,6 @@ class UsuarioController : AppCompatActivity() {
                     userBD.child("Usuario").setValue(usuario)
                     userBD.child("Password").setValue(contraseña)
                     userBD.child("image").setValue(image)
-                    action()
                 }
             }
 
@@ -70,7 +69,6 @@ class UsuarioController : AppCompatActivity() {
         userBD.child("ApellidoMaterno").setValue(apMat)
         userBD.child("Usuario").setValue(usuario)
         userBD.child("Password").setValue(contraseña)
-        action()
 
     }
 
@@ -86,7 +84,4 @@ class UsuarioController : AppCompatActivity() {
             }
     }
 
-    private fun action(){
-        startActivity(Intent(this, ActivityLogin::class.java))
-    }
 }

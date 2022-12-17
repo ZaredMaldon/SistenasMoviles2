@@ -73,7 +73,7 @@ class editarPublicacion : AppCompatActivity() {
 
     /*Botones*/
     fun onClickVolver(view: View) {
-        val change = Intent(this,ActivityPublicaciones::class.java)
+        val change = Intent(this,ActivityMenu::class.java)
         startActivity(change)
     }
 
