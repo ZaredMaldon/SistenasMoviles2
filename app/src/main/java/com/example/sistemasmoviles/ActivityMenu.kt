@@ -8,16 +8,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.sistemasmoviles.Controller.UsuarioController
+import com.example.sistemasmoviles.HTTP.RestEngine
+import com.example.sistemasmoviles.HTTP.Service
+import com.example.sistemasmoviles.Model.Respuesta
+import com.example.sistemasmoviles.adapter.PostAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarMenu
 import com.google.android.material.navigation.NavigationBarView
+import retrofit2.Call
+import retrofit2.Callback
 
 class ActivityMenu : AppCompatActivity() {
 
@@ -125,5 +135,6 @@ class ActivityMenu : AppCompatActivity() {
         }
 
     }
+
 }
 

@@ -11,7 +11,10 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import com.example.sistemasmoviles.Controller.UsuarioController
+import com.example.sistemasmoviles.databinding.ActivityPublicacionBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import org.json.JSONObject
 
 
@@ -19,6 +22,8 @@ class ActivityLogin : AppCompatActivity() {
 
     private var login: LoginFragment = LoginFragment()
     private var register: RegisterFragment = RegisterFragment()
+    private lateinit var image:String
+    private val File = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +35,7 @@ class ActivityLogin : AppCompatActivity() {
 
             var auth = FirebaseAuth.getInstance()
 
-            val user: JSONObject = JSONObject(pref)
+            val user = JSONObject(pref)
             val correoU:String = user.getString("correo")
             val contrasniaU:String = user.getString("pass")
 
@@ -97,6 +102,40 @@ class ActivityLogin : AppCompatActivity() {
         startActivity(Intent(this,ActivityMenu::class.java))
     }
 
+    fun onClickAdjuntar(view: View) {
+        fileUpload()
+    }
+
+    fun fileUpload() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "*/*"
+        startActivityForResult(intent, File)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == File) {
+            if (resultCode == RESULT_OK) {
+                val FileUri = data!!.data
+                val Folder: StorageReference =
+                    FirebaseStorage.getInstance().getReference().child("User").child("Img_Perfil_Usuario")
+                val file_name: StorageReference = Folder.child("file" + FileUri!!.lastPathSegment)
+                file_name.putFile(FileUri).addOnSuccessListener { taskSnapshot ->
+                    file_name.getDownloadUrl().addOnSuccessListener { uri ->
+                        image=java.lang.String.valueOf(uri)
+                        val hashMap =
+                            HashMap<String, String>()
+                        hashMap["link"] = java.lang.String.valueOf(uri)
+
+                        //myRef.setValue(hashMap)
+                        Log.d("Mensaje", "Se subió correctamente")
+                    }
+                }
+            }
+        }
+    }
+
     fun onClickRegistrar(view: View) {//Registro
 
         var txtName: EditText =findViewById(R.id.TB_NombreU)
@@ -118,7 +157,7 @@ class ActivityLogin : AppCompatActivity() {
         if (!TextUtils.isEmpty(nombreU) && !TextUtils.isEmpty(emailU) && !TextUtils.isEmpty(apellidoP) && !TextUtils.isEmpty(apellidoM) && !TextUtils.isEmpty(usuarioU) && !TextUtils.isEmpty(contraseñaU)) {//revisamos que no estan vacios
             if(contraseñaU == confirmar) {
                 var db = UsuarioController()
-                db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU)
+                db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU, image)
                 Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
             }
             else{

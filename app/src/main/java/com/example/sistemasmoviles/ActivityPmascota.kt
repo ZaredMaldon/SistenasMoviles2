@@ -1,26 +1,39 @@
 package com.example.sistemasmoviles
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.sistemasmoviles.HTTP.RestEngine
 import com.example.sistemasmoviles.HTTP.Service
+import com.example.sistemasmoviles.Model.Chat
 import com.example.sistemasmoviles.Model.Respuesta
 import com.example.sistemasmoviles.Model.RespuestaImagen
 import com.example.sistemasmoviles.databinding.ActivityBuscarBinding
 import com.example.sistemasmoviles.databinding.ActivityPmascotaBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
+import java.util.*
 
 class ActivityPmascota : AppCompatActivity() {
 
     private var idPubli=0
+    private var idUsuario= ""
     private lateinit var binding: ActivityPmascotaBinding
     private val listaCorusel = mutableListOf<CarouselItem>()
 
@@ -61,6 +74,7 @@ class ActivityPmascota : AppCompatActivity() {
                     binding.tvNombreP.text = publicacion?.Nombre
                     binding.tvTipoP.text = publicacion?.Tipo
                     binding.tvDescripcionP.text = publicacion?.Descripcion
+                    idUsuario = publicacion?.Usuario.toString()
                     getImages()
 
                     Toast.makeText(this@ActivityPmascota,publicacion?.Nombre,Toast.LENGTH_LONG).show()
@@ -129,4 +143,41 @@ class ActivityPmascota : AppCompatActivity() {
         val change = Intent(this,ActivityBuscar::class.java)
         startActivity(change)
     }
+
+    fun onClickAdopcion(view: View) {
+
+        var user = ""
+
+        var db = Firebase.firestore
+
+        lateinit var otherUser: String;
+
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val pref: String = preferences.getString("UsuarioJson", "")!!
+        if(pref != "") {
+
+            val objPref = JSONObject(pref)
+            user = objPref.getString("correo")
+        }
+
+        val chatId = UUID.randomUUID().toString()
+        val users = listOf(user, otherUser)
+
+        val chat = Chat(
+            id = chatId,
+            name = "Chat con $otherUser",
+            users = users
+        )
+
+        db.collection("chats").document(chatId).set(chat)
+        db.collection("users").document(user).collection("chats").document(chatId).set(chat)
+        db.collection("users").document(otherUser).collection("chats").document(chatId).set(chat)
+
+        val intent = Intent(this, ActivityChat::class.java)
+        intent.putExtra("chatId", chatId)
+        intent.putExtra("user", user)
+        startActivity(intent)
+
+    }
+
 }
