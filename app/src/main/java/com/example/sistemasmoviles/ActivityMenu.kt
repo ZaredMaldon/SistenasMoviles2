@@ -30,6 +30,7 @@ import com.example.sistemasmoviles.Model.ImagenPubli
 import com.example.sistemasmoviles.Model.Publicacion
 import com.example.sistemasmoviles.Model.Respuesta
 import com.example.sistemasmoviles.adapter.PostAdapter
+import com.example.sistemasmoviles.adapter.PostAdapterUsuario
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarMenu
@@ -55,7 +56,9 @@ class ActivityMenu : AppCompatActivity() {
     private var editar: FragmentEditar = FragmentEditar()
     private var nuevaPubli: FragmentNuevaPubli = FragmentNuevaPubli()
 
+
     private lateinit var adapterUsuario: PostAdapter
+    private lateinit var adapterUsuario2:PostAdapterUsuario
 
     var listaP = mutableListOf<Respuesta>()
 
@@ -104,14 +107,6 @@ class ActivityMenu : AppCompatActivity() {
         return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
     }
 
-    fun isTextValid(text: String): Boolean {
-        val regEx = "^[a-zñ]+[a-zñ\\s]+[a-zñ]\$"
-        val inputStr: CharSequence = text
-        val pattern: Pattern = Pattern.compile(regEx, Pattern.UNICODE_CASE)
-        val matcher: Matcher = pattern.matcher(inputStr)
-        return if (matcher.matches()) true else false
-    }
-
     fun onClickPublicar(view: View) {
         //Aqui poner la lista con las direcciones de las imagenes y agregarla a la tabla de imagenes
         /*DATOS DE LA PUBLICACION*/
@@ -134,17 +129,17 @@ class ActivityMenu : AppCompatActivity() {
             Toast.makeText(this, "Edad debe ser un numero", Toast.LENGTH_SHORT).show()
             validacion=false
         }
-        if(!isTextValid(txtNombre.text.toString())){
+        if(isNumber(txtNombre.text.toString())){
             validacion=false
             Toast.makeText(this, "El nombre debe tener solo letras", Toast.LENGTH_SHORT).show()
 
         }
-        if(!isTextValid(txtDescripcion.text.toString())){
+        if(isNumber(txtDescripcion.text.toString())){
             validacion=false
             Toast.makeText(this, "La Descripcion debe tener solo letras", Toast.LENGTH_SHORT).show()
 
         }
-        if(!isTextValid(txtTipo.text.toString())){
+        if(isNumber(txtTipo.text.toString())){
             validacion=false
             Toast.makeText(this, "El tipo debe tener solo letras", Toast.LENGTH_SHORT).show()
         }
@@ -155,17 +150,16 @@ class ActivityMenu : AppCompatActivity() {
             Log.e("Links",links.toString())
             PublicacionController(publi).agregar(links,this@ActivityMenu)
             Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
+            txtNombre.setText("")
+            txtEdad.setText("")
+            txtTipo.setText("")
+            txtDescripcion.setText("")
+           //links.clear()
 
 
             supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
             
         }
-
-        txtNombre.setText("")
-        txtEdad.setText("")
-        txtTipo.setText("")
-        txtDescripcion.setText("")
-        supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
 
     }
 

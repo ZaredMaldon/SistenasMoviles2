@@ -79,8 +79,10 @@ class editarPublicacion : AppCompatActivity() {
 
     /*Botones*/
     fun onClickVolver(view: View) {
+        limpiar()
         val change = Intent(this, ActivityMenu::class.java)
         startActivity(change)
+
     }
 
     fun onClickPublicar(view: View) {
@@ -93,18 +95,18 @@ class editarPublicacion : AppCompatActivity() {
             Toast.makeText(this, "Edad debe ser un numero", Toast.LENGTH_SHORT).show()
             validacion = false
         }
-        if (!isTextValid(txtNombre.text.toString())) {
-            validacion = false
+        if(isNumber(txtNombre.text.toString())){
+            validacion=false
             Toast.makeText(this, "El nombre debe tener solo letras", Toast.LENGTH_SHORT).show()
 
         }
-        if (!isTextValid(txtDescripcion.text.toString())) {
-            validacion = false
+        if(isNumber(txtDescripcion.text.toString())){
+            validacion=false
             Toast.makeText(this, "La Descripcion debe tener solo letras", Toast.LENGTH_SHORT).show()
 
         }
-        if (!isTextValid(txtTipo.text.toString())) {
-            validacion = false
+        if(isNumber(txtTipo.text.toString())){
+            validacion=false
             Toast.makeText(this, "El tipo debe tener solo letras", Toast.LENGTH_SHORT).show()
         }
 
@@ -123,7 +125,7 @@ class editarPublicacion : AppCompatActivity() {
             /* Publicacion */
             PublicacionController(publi).editar(idPubli)
             Toast.makeText(this, "La publicacion se modifico correctamente", Toast.LENGTH_SHORT).show()
-            limpiar()
+            //limpiar()
         }
 
 
@@ -141,11 +143,5 @@ class editarPublicacion : AppCompatActivity() {
         return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
     }
 
-    fun isTextValid(text: String): Boolean {
-        val regEx = "^[a-zñ]+[a-zñ\\s]+[a-zñ]\$"
-        val inputStr: CharSequence = text
-        val pattern: Pattern = Pattern.compile(regEx, Pattern.UNICODE_CASE)
-        val matcher: Matcher = pattern.matcher(inputStr)
-        return if (matcher.matches()) true else false
-    }
+
 }

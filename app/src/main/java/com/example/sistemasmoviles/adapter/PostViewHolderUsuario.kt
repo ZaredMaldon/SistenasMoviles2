@@ -1,13 +1,7 @@
 package com.example.sistemasmoviles.adapter
 
-import android.content.Context
-import android.preference.PreferenceManager
 import android.util.Log
-import android.util.LogPrinter
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sistemasmoviles.HTTP.RestEngine
 import com.example.sistemasmoviles.HTTP.Service

@@ -35,7 +35,7 @@ class FragmentUsuario : Fragment() {
 
     var listaP:MutableList<Respuesta> = arrayListOf()
 
-    private lateinit var adapterUsuario: PostAdapter
+    private lateinit var adapterUsuario2: PostAdapterUsuario
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -109,7 +109,7 @@ class FragmentUsuario : Fragment() {
     }
 
     private fun initRecyclerView(view: View){
-        var adapterUsuario = PostAdapterUsuario(
+            adapterUsuario2 = PostAdapterUsuario(
             postsList = listaP,
             onClickListener = {publicacion -> onItemSelected(publicacion)},
             onClickDelete = {position -> onDeletedItem(position)},
@@ -120,7 +120,7 @@ class FragmentUsuario : Fragment() {
 
         var rvPublicacionesU: RecyclerView = view.findViewById(R.id.rvPublicacionesU)
         rvPublicacionesU.layoutManager = manager
-        rvPublicacionesU.adapter = adapterUsuario
+        rvPublicacionesU.adapter = adapterUsuario2
     }
 
     private fun onUpdateItem(publicacion:Respuesta) {
@@ -130,7 +130,6 @@ class FragmentUsuario : Fragment() {
     }
 
     private fun deleteById(id: Int) {
-        //PublicacionController(Publicacion("null","null","null","null",0,0,"null")).eliminar(id)
         val service: Service = RestEngine.getRestEngine().create(Service::class.java)
         val result: Call<Void> = service.deletePublicacion(id)
         result.enqueue(object: Callback<Void> {
@@ -151,7 +150,7 @@ class FragmentUsuario : Fragment() {
     private fun onDeletedItem(position: Int) {
         //remover item de la lista
         listaP.removeAt(position)
-        adapterUsuario.notifyItemRemoved(position)
+        adapterUsuario2.notifyItemRemoved(position)
 
     }
 

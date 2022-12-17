@@ -24,31 +24,6 @@ class PublicacionController(var pub:Publicacion) {
     private var Fk_Publicacion=0
     private var intento = 0
 
-    @SuppressLint("RestrictedApi")
-     fun enviar(): JsonObjectRequest {
-        // Inicializacion del Objeto JSON
-        val jsonObject= JSONObject()
-        jsonObject.put("Nombre",pub?.Nombre)
-        jsonObject.put("Edad",pub?.Edad)
-        jsonObject.put("Tipo",pub?.Tipo)
-        jsonObject.put("Descripcion",pub?.Descripcion)
-        jsonObject.put("MeGusta",pub?.MeGusta)
-        jsonObject.put("Estatus",pub?.Estatus)
-        jsonObject.put("Usuario",pub?.Usuario)
-
-        //val queue = Volley.newRequestQueue(this)
-        val url="https://apipublicaciones.zambiaa.com/api/publicaciones"
-        val stringRequest= JsonObjectRequest(
-            Request.Method.POST,url,jsonObject,
-            Response.Listener { response ->
-            Log.i(PackageManagerCompat.LOG_TAG,"Response is: $response")
-        },
-            Response.ErrorListener {
-                error->
-            error.printStackTrace()
-        })
-        return stringRequest
-    }
 
     fun agregar(links:List<String>,context: Context){//POST
 
