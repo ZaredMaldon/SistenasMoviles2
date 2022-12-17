@@ -42,7 +42,7 @@ interface Service {
     //Servicios para imagenes de Publicaciones
     @Headers("Content-Type: application/json")
     @POST("imagenes")
-    fun setImage(@Body imageData:ImagenPubli):Call<Int>
+    fun setImage(@Body imageData:ImagenPubli):Call<Void>
     //Imagenes de la publicacion
     @GET("publicaciones/images/{id}")
     fun getPublicacionImages(@Path("id") id: Int): Call<List<RespuestaImagen>>

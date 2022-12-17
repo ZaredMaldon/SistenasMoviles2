@@ -1,6 +1,7 @@
 package com.example.sistemasmoviles.Controller
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.util.LogPrinter
 import androidx.core.content.PackageManagerCompat
@@ -10,6 +11,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.example.sistemasmoviles.HTTP.RestEngine
 import com.example.sistemasmoviles.HTTP.Service
+import com.example.sistemasmoviles.Model.ImagenPubli
 import com.example.sistemasmoviles.Model.Publicacion
 import com.example.sistemasmoviles.Model.Respuesta
 import org.json.JSONObject
@@ -19,6 +21,8 @@ import java.io.IOException
 
 
 class PublicacionController(var pub:Publicacion) {
+    private var Fk_Publicacion=0
+    private var intento = 0
 
     @SuppressLint("RestrictedApi")
      fun enviar(): JsonObjectRequest {
@@ -46,23 +50,31 @@ class PublicacionController(var pub:Publicacion) {
         return stringRequest
     }
 
-    fun agregar(): Boolean {//POST
-        var permiso = true
-        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
-        val result: Call<Int> = service.setPubli(pub)
+    fun agregar(links:List<String>,context: Context){//POST
 
-        result.enqueue(object: Callback<Int> {
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-               permiso = false
-            }
+            val service: Service = RestEngine.getRestEngine().create(Service::class.java)
+            val result: Call<Int> = service.setPubli(pub)
 
-            override fun onResponse(call: Call<Int>, response: retrofit2.Response<Int>) {
-                if(response.isSuccessful){
-                    permiso=true
+            result.enqueue(object : Callback<Int> {
+                override fun onFailure(call: Call<Int>, t: Throwable) {
+                    Fk_Publicacion = 0
                 }
-            }
-        })
-        return permiso
+
+                override fun onResponse(call: Call<Int>, response: retrofit2.Response<Int>) {
+                    if (response.isSuccessful) {
+                        Fk_Publicacion = response.body()!!
+
+                        for(item in links){//Agregar imagenes de la publicacion
+                            Log.e("Entre",item.toString())
+                            var imagen= ImagenPubli(item,Fk_Publicacion)
+                            ImagenController(imagen).agregarImagen(context)
+                        }
+
+                    }
+                }
+            })
+
+
     }
 
     fun editar(id:Int){

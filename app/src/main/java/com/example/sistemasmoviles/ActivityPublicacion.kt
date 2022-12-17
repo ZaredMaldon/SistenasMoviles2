@@ -19,6 +19,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 
@@ -118,26 +122,21 @@ class ActivityPublicacion : AppCompatActivity() {
         val change = Intent(this,ActivityPublicaciones::class.java)
         startActivity(change)
     }
+
     fun onClickPublicar(view: View) {
         //Aqui poner la lista con las direcciones de las imagenes y agregarla a la tabla de imagenes
         /*DATOS DE LA PUBLICACION*/
-        var publi=Publicacion(txtNombre.text.toString(),txtEdad.text.toString(),txtTipo.text.toString(),txtDescripcion.text.toString(), 20,1,userFirebase.uid)
+
 
         /*API*/
         /* Publicacion */
-        var resultado=PublicacionController(publi).agregar()
 
-        if(resultado){
-            /*Imagenes*/
-            for(item in links){
-                var imagen=ImagenPubli(item)
-                ImagenController(imagen).agregarImagen(this@ActivityPublicacion)
-            }
-            links.clear()
-            Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(this, "Error: No se pudo obtener informacion", Toast.LENGTH_SHORT).show()
-        }
+        var publi=Publicacion(txtNombre.text.toString(),txtEdad.text.toString(),txtTipo.text.toString(),txtDescripcion.text.toString(), 20,1,userFirebase.uid)
+        Log.e("Links",links.toString())
+        PublicacionController(publi).agregar(links,this@ActivityPublicacion)
+        links.clear()
+        listaCorusel.clear()
+        Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
 
     }
 
