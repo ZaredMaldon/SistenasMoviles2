@@ -49,7 +49,7 @@ class ActivityPmascota : AppCompatActivity() {
             idPubli=it
         }
 
-        Toast.makeText(this, idPubli.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, idPubli.toString(), Toast.LENGTH_SHORT).show()
 
         getPublicacion()
 
@@ -73,7 +73,7 @@ class ActivityPmascota : AppCompatActivity() {
 
                     getImages()
 
-                    Toast.makeText(this@ActivityPmascota,publicacion?.Nombre,Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this@ActivityPmascota,publicacion?.Nombre,Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -119,7 +119,7 @@ class ActivityPmascota : AppCompatActivity() {
 
                     getImages()
 
-                    Toast.makeText(this@ActivityPmascota,publicacion?.Nombre,Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this@ActivityPmascota,publicacion?.Nombre,Toast.LENGTH_LONG).show()
                 }
 
             }

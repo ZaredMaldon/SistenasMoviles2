@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentNuevaPubli">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/encabezadoPM"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="-10dp"
+        android:background="@drawable/redondo_verde"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.002" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:text="Publica una nueva mascota!"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/EncabezadoPM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintStart_toStartOf="@+id/EncabezadoPM"
+        app:layout_constraintTop_toTopOf="@+id/EncabezadoPM"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/encabezadoPM"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_PublicarPM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EncabezadoPM"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="30dp">
+
+
+            <TextView
+                android:id="@+id/lbl_NombrePM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="24dp"
+                android:text="Nombre de Mascota:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_NombrePM"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lbl_EdadPM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="24dp"
+                android:text="Edad de Mascota:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_EdadPM"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Edad"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lbl_TipoPM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="24dp"
+                android:text=" Tipo de Animal:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_TipoPM"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Tipo"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/lbl_Fotografia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Fotografias:"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/Btn_FotosPM"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:background="@drawable/redondo_verde"
+                android:onClick="onClickAdjuntar"
+                android:text="Adjuntar" />
+
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/carousel"
+                android:layout_width="375dp"
+                android:layout_height="300dp">
+
+            </org.imaginativeworld.whynotimagecarousel.ImageCarousel>
+
+            <TextView
+                android:id="@+id/lbl_Descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Descripcion:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/TB_DescripcionPM"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/redondo_borde"
+                android:ems="10"
+                android:hint="Descripcion"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="Volver"
+        android:onClick="onClickVolver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back"
+        app:tint="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btn_PublicarPM2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scrollView2"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-55dp"
+        android:layout_marginEnd="20dp"
+        android:onClick="onClickPublicar"
+        android:text="Publicar" />
+
+</RelativeLayout>
