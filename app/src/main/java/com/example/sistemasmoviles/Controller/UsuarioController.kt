@@ -77,9 +77,9 @@ class UsuarioController : AppCompatActivity() {
             ?.addOnCompleteListener(this){
                     task->
                 if(task.isComplete){
-                    Toast.makeText(this,"Email enviado", Toast.LENGTH_LONG).show()
+
                 }else{
-                    Toast.makeText(this,"Error al enviar el email", Toast.LENGTH_LONG).show()
+
                 }
             }
     }

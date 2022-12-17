@@ -170,7 +170,17 @@ class ActivityLogin : AppCompatActivity() {
 
                     var db = UsuarioController()
                     db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU, image)
-                    Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+
+                    var auth = FirebaseAuth.getInstance()
+
+                    auth.signInWithEmailAndPassword(emailU, contraseñaU)
+                        .addOnCompleteListener(this){
+                                task->
+                            if(task.isSuccessful){
+                                Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+                                action()
+                            }
+                        }
                 }
                 else{
                     Toast.makeText(this, "Las contraseñas son distintas", Toast.LENGTH_SHORT).show()

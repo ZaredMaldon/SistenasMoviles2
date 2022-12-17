@@ -125,6 +125,10 @@ class editarPublicacion : AppCompatActivity() {
             /* Publicacion */
             PublicacionController(publi).editar(idPubli)
             Toast.makeText(this, "La publicacion se modifico correctamente", Toast.LENGTH_SHORT).show()
+
+            limpiar()
+            val change = Intent(this, ActivityMenu::class.java)
+            startActivity(change)
             //limpiar()
         }
 
