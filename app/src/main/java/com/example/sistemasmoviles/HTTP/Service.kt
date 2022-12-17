@@ -15,7 +15,7 @@ interface Service {
     fun getPublicacionesById(@Path("id") id: Int): Call<Respuesta>
 
     @GET("publicaciones/{buscarpor}")
-    suspend fun getPublicaciones(@Path("buscarpor") buscarpor: String?): Response<List<Respuesta>>
+    fun getPublicaciones(@Path("buscarpor") buscarpor: String?): Call<List<Respuesta>>
 
     @GET("publicaciones/user/{Usuario}")
     fun getPublicacionByUser(@Path("Usuario") Usuario: String): Call<List<Respuesta>>

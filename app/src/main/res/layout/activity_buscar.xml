@@ -72,9 +72,8 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar"
-        android:layout_width="409dp"
-        android:layout_height="92dp"
-        android:layout_marginStart="1dp"
+        android:layout_width="417dp"
+        android:layout_height="93dp"
         android:layout_marginTop="-10dp"
         android:background="@drawable/redondo_verde"
         android:minHeight="?attr/actionBarSize"
@@ -86,21 +85,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.003" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_Search"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+
+    <EditText
+        android:id="@+id/tvBuscar"
+        android:layout_width="281dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="18dp"
+        android:autofillHints=""
+        android:background="@drawable/redondo_borde"
+        android:ems="10"
+        android:hint="Busca"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="@+id/materialToolbar"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/toolbar9"
@@ -112,8 +115,25 @@
             android:id="@+id/recyclerViewPublis"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="65dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="328dp"
+        android:layout_marginTop="15dp"
+        android:onClick="onClickBuscar"
+        app:layout_constraintStart_toStartOf="@+id/materialToolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/search"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@drawable/search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

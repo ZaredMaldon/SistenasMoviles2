@@ -79,6 +79,7 @@ class ActivityPublicacion : AppCompatActivity() {
                         val uri = clipData.getItemAt(i).uri
                         uri?.let { fileUpload(it) }
                     }
+
                 }else {
                     val uri = data.data
                     uri?.let { fileUpload(it) }
@@ -102,6 +103,7 @@ class ActivityPublicacion : AppCompatActivity() {
                 hashMap["link"] = java.lang.String.valueOf(uri)
                 links.add(java.lang.String.valueOf(uri))
                 listaCorusel.add(CarouselItem(java.lang.String.valueOf(uri)))
+                carousel.addData(listaCorusel)
                 //myRef.child(myRef.push().key.toString()).setValue(hashMap)
 
                 Log.i("message", "file upload successfully")
@@ -142,7 +144,7 @@ class ActivityPublicacion : AppCompatActivity() {
     fun onClickAdjuntar(view: View) {
         //listaCorusel.clear()
         fileManager()
-        carousel.addData(listaCorusel)
+
     }
 
 

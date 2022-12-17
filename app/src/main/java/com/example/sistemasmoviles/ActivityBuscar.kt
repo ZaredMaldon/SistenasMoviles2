@@ -23,7 +23,6 @@ import retrofit2.Response
 
 class ActivityBuscar : AppCompatActivity(){
     private lateinit var mDataBase: DatabaseReference;
-    private lateinit var search:SearchView
     var listaP = mutableListOf<Respuesta>()
     private lateinit var binding: ActivityBuscarBinding
     private lateinit var adapterUsuario: PostAdapter
@@ -32,28 +31,13 @@ class ActivityBuscar : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar)
-        search = findViewById(R.id.sv_Search)
 
         binding = ActivityBuscarBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //binding.svSearch.setOnQueryTextListener(this)
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.svSearch.clearFocus()
-                Toast.makeText(this@ActivityBuscar, "Ebtre", Toast.LENGTH_SHORT).show()
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-               return false
-            }
-
-        })
-
 
         mDataBase = FirebaseDatabase.getInstance().reference;
-
-
+        initRecyclerView()
         getPublicaciones()
 
     }
@@ -86,43 +70,48 @@ class ActivityBuscar : AppCompatActivity(){
 
             override fun onFailure(call: Call<List<Respuesta>>, t: Throwable){
 
-                Toast.makeText( this@ActivityBuscar,t.message,Toast.LENGTH_LONG).show()
+                Toast.makeText( this@ActivityBuscar,t.message.toString(),Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<List<Respuesta>>, response: retrofit2.Response<List<Respuesta>>){
                 //showData(response.body()!!)
-                listaP = (response.body() as MutableList<Respuesta>?)!!
+                val publis: List<Respuesta>? = response.body()
+                val pub:List<Respuesta> = publis?: emptyList()
+                listaP.clear()
+                listaP.addAll(pub)
+                adapterUsuario.notifyDataSetChanged()
 
-                initRecyclerView()
                 Toast.makeText(this@ActivityBuscar,"OK",Toast.LENGTH_LONG).show()
             }
         })
     }
 
-    /*private fun getPub(query: String?) {
+    private fun getPub(query: String?) {
 
-        //var list:MutableList<Respuesta> = arrayListOf()
-        CoroutineScope(Dispatchers.IO).launch {
+        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<List<Respuesta>> = service.getPublicaciones(query)
 
-            val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
-            val result: Response<List<Respuesta>> = service.getPublicaciones(query)
-            val publis: List<Respuesta>? = result.body()
-            Log.e("Lista",publis.toString())
-            runOnUiThread{
+        Log.e("getPublicaciones",result.toString())
 
-                if(result.isSuccessful){
-                    val pub:List<Respuesta> = publis?: emptyList()
-                    listaP.clear()
-                    listaP.addAll(pub)
+        result.enqueue(object: Callback<List<Respuesta>> {
 
-                    adapterUsuario.notifyDataSetChanged()
-                }else{
-                    showError()
-                }
+            override fun onFailure(call: Call<List<Respuesta>>, t: Throwable){
+
+                Toast.makeText( this@ActivityBuscar,t.message.toString(),Toast.LENGTH_LONG).show()
             }
 
-        }
-    }*/
+            override fun onResponse(call: Call<List<Respuesta>>, response: retrofit2.Response<List<Respuesta>>){
+                //showData(response.body()!!)
+                val publis: List<Respuesta>? = response.body()
+                val pub:List<Respuesta> = publis?: emptyList()
+                listaP.clear()
+                listaP.addAll(pub)
+                adapterUsuario.notifyDataSetChanged()
+
+                Toast.makeText(this@ActivityBuscar,"OK",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
 
     private fun showError() {
         Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
@@ -144,11 +133,12 @@ class ActivityBuscar : AppCompatActivity(){
     }
 
     fun onClickBuscar(view: View) {//Buscar
-        //getPublicaciones()
-        //Toast.makeText(this, txtSearch.text.toString(), Toast.LENGTH_SHORT).show()
+        if(binding.tvBuscar.text.isNullOrEmpty()){
+            getPublicaciones()
+        }else{
+            Log.e("e",binding.tvBuscar.text.toString())
+            getPub(binding.tvBuscar.text.toString())
+        }
     }
-
-
-
 
 }
