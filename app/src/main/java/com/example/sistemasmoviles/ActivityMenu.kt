@@ -105,7 +105,7 @@ class ActivityMenu : AppCompatActivity() {
     }
 
     fun isTextValid(text: String): Boolean {
-        val regEx = "^[a-zA-Z\\t\\h]+|(^\$)$"
+        val regEx = "^[a-zñ]+[a-zñ\\s]+[a-zñ]\$"
         val inputStr: CharSequence = text
         val pattern: Pattern = Pattern.compile(regEx, Pattern.UNICODE_CASE)
         val matcher: Matcher = pattern.matcher(inputStr)
