@@ -41,6 +41,8 @@ import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import retrofit2.Call
 import retrofit2.Callback
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class ActivityMenu : AppCompatActivity() {
 
@@ -102,6 +104,14 @@ class ActivityMenu : AppCompatActivity() {
         return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
     }
 
+    fun isTextValid(text: String): Boolean {
+        val regEx = "^[a-zA-Z\\t\\h]+|(^\$)$"
+        val inputStr: CharSequence = text
+        val pattern: Pattern = Pattern.compile(regEx, Pattern.UNICODE_CASE)
+        val matcher: Matcher = pattern.matcher(inputStr)
+        return if (matcher.matches()) true else false
+    }
+
     fun onClickPublicar(view: View) {
         //Aqui poner la lista con las direcciones de las imagenes y agregarla a la tabla de imagenes
         /*DATOS DE LA PUBLICACION*/
@@ -122,7 +132,22 @@ class ActivityMenu : AppCompatActivity() {
         }
         if(!isNumber(txtEdad.text.toString())){
             Toast.makeText(this, "Edad debe ser un numero", Toast.LENGTH_SHORT).show()
-        }   
+            validacion=false
+        }
+        if(!isTextValid(txtNombre.text.toString())){
+            validacion=false
+            Toast.makeText(this, "El nombre debe tener solo letras", Toast.LENGTH_SHORT).show()
+
+        }
+        if(!isTextValid(txtDescripcion.text.toString())){
+            validacion=false
+            Toast.makeText(this, "La Descripcion debe tener solo letras", Toast.LENGTH_SHORT).show()
+
+        }
+        if(!isTextValid(txtTipo.text.toString())){
+            validacion=false
+            Toast.makeText(this, "El tipo debe tener solo letras", Toast.LENGTH_SHORT).show()
+        }
         
         
         if(validacion){
@@ -131,27 +156,16 @@ class ActivityMenu : AppCompatActivity() {
             PublicacionController(publi).agregar(links,this@ActivityMenu)
             Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
 
-<<<<<<< HEAD
+
             supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
             
         }
-            
 
-        
-
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
         txtNombre.setText("")
         txtEdad.setText("")
         txtTipo.setText("")
         txtDescripcion.setText("")
         supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
-<<<<<<< Updated upstream
-=======
->>>>>>> 2cafb20be187ba0a31a6b386c3eee7c16deca1a0
->>>>>>> Stashed changes
 
     }
 
