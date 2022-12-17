@@ -109,27 +109,17 @@ class ActivityMenu : AppCompatActivity() {
         var txtEdad : EditText=findViewById(R.id.TB_EdadPM)
         var txtTipo : EditText=findViewById(R.id.TB_TipoPM)
         var txtDescripcion : EditText=findViewById(R.id.TB_DescripcionPM)
-
-        var publi= Publicacion(txtNombre.text.toString(),txtEdad.text.toString(),txtTipo.text.toString(),txtDescripcion.text.toString(), 20,1,userFirebase.uid)
+        var listaCorusel = mutableListOf<CarouselItem>()
 
         /*API*/
         /* Publicacion */
-        var resultado= PublicacionController(publi).agregar()
 
-        if(resultado){
-            /*Imagenes*/
-            for(item in links){
-                var imagen= ImagenPubli(item)
-                ImagenController(imagen).agregarImagen(this@ActivityMenu)
-            }
-            links.clear()
-            Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
+        var publi=Publicacion(txtNombre.text.toString(),txtEdad.text.toString(),txtTipo.text.toString(),txtDescripcion.text.toString(), 20,1,userFirebase.uid)
+        Log.e("Links",links.toString())
+        PublicacionController(publi).agregar(links,this@ActivityMenu)
+        Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
 
             supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
-
-        }else{
-            Toast.makeText(this, "Error: No se pudo obtener informacion", Toast.LENGTH_SHORT).show()
-        }
 
     }
 

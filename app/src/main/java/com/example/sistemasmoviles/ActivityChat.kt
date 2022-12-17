@@ -16,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 class ActivityChat : AppCompatActivity() {
     private var chatId = ""
     private var user = ""
+    private var nombre = ""
 
     private var db = Firebase.firestore
 
@@ -25,6 +26,7 @@ class ActivityChat : AppCompatActivity() {
 
         intent.getStringExtra("chatId")?.let { chatId = it }
         intent.getStringExtra("user")?.let { user = it }
+        intent.getStringExtra("nombre")?.let { nombre = it }
 
         if (chatId.isNotEmpty() && user.isNotEmpty()) {
             initViews()
@@ -32,6 +34,10 @@ class ActivityChat : AppCompatActivity() {
     }
 
     private fun initViews(){
+
+        val nombreChat = findViewById<TextView>(R.id.tvNombre)
+        nombreChat.text = nombre
+
         val messagesRecylerView = findViewById<RecyclerView>(R.id.messagesRecylerView)
         messagesRecylerView.layoutManager = LinearLayoutManager(this)
         messagesRecylerView.adapter = MessageController(user)
@@ -55,6 +61,11 @@ class ActivityChat : AppCompatActivity() {
                 }
             }
 
+    }
+
+    fun onClickVolver(view: View) {
+        val change = Intent(this,ActivityMenu::class.java)
+        startActivity(change)
     }
 
     fun sendMessage(view: View) {

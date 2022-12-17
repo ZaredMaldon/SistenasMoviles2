@@ -99,8 +99,6 @@ class ActivityPublicacion : AppCompatActivity() {
         val path =mUri.lastPathSegment.toString()
         val fileName: StorageReference = folder.child(path.substring(path.lastIndexOf('/')+1))
 
-
-
         fileName.putFile(mUri).addOnSuccessListener {
             fileName.downloadUrl.addOnSuccessListener { uri ->
                 val hashMap = HashMap<String, String>()

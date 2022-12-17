@@ -201,6 +201,7 @@ class ActivityPmascota : AppCompatActivity() {
         val intent = Intent(this, ActivityChat::class.java)
         intent.putExtra("chatId", chatId)
         intent.putExtra("user", user)
+        intent.putExtra("nombre", chat.name)
         startActivity(intent)
 
     }

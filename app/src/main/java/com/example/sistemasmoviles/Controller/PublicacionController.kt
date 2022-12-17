@@ -55,6 +55,8 @@ class PublicacionController(var pub:Publicacion) {
             val service: Service = RestEngine.getRestEngine().create(Service::class.java)
             val result: Call<Int> = service.setPubli(pub)
 
+        Log.e("Entre",result.toString())
+
             result.enqueue(object : Callback<Int> {
                 override fun onFailure(call: Call<Int>, t: Throwable) {
                     Fk_Publicacion = 0
@@ -73,7 +75,6 @@ class PublicacionController(var pub:Publicacion) {
                     }
                 }
             })
-
 
     }
 

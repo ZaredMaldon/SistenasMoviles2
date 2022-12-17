@@ -88,6 +88,7 @@ class FragmentMensajes : Fragment() {
         val intent = Intent(activity, ActivityChat::class.java)
         intent.putExtra("chatId", chat.id)
         intent.putExtra("user", user)
+        intent.putExtra("nombre", chat.name)
         startActivity(intent)
     }
 
