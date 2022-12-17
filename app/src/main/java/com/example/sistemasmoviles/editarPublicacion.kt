@@ -36,7 +36,7 @@ class editarPublicacion : AppCompatActivity() {
         intent.getIntExtra("idPubli", 0).let {
             idPubli = it
         }
-        Toast.makeText(this, idPubli.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, idPubli.toString(), Toast.LENGTH_SHORT).show()
 
         txtNombre = findViewById(R.id.TB_NombrePM)
         txtEdad = findViewById(R.id.TB_EdadPM)

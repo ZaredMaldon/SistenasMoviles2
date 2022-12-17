@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 
 class FragmentHome : Fragment() {
 
@@ -23,6 +25,8 @@ class FragmentHome : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var textNombre: TextView = view.findViewById(R.id.textView)
+        var imageView: ImageView = view.findViewById(R.id.imageView)
+
         var firebaseAuth = FirebaseAuth.getInstance()
         var userFirebase = firebaseAuth.currentUser!!
 
@@ -35,6 +39,12 @@ class FragmentHome : Fragment() {
                     var apellidoP = snapshot.child("ApellidoPaterno").value.toString()
                     var apellidoM = snapshot.child("ApellidoMaterno").value.toString()
                     textNombre.text = nombre + " " + apellidoP + " " + apellidoM
+                    Picasso.with(activity)
+                        .load(snapshot.child("image").value.toString())
+                        .error(R.mipmap.ic_launcher)
+                        .fit()
+                        .centerInside()
+                        .into(imageView)
 
                 }
             }

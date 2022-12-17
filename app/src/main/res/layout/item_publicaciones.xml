@@ -3,59 +3,79 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/color_primario">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/iv_Publiaciones"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/redondo_verde"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:background="@color/black" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_PublicacionName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:fontFamily="casual"
-        app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Nombre" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="379dp"
+            android:layout_height="120dp"
+            android:background="@drawable/redondo_verde">
 
-    <TextView
-        android:id="@+id/tv_PublicacionEdad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:fontFamily="casual"
-        app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
-        app:layout_constraintTop_toBottomOf="@+id/tv_PublicacionName"
-        tools:text="Edad" />
+            <TextView
+                android:id="@+id/tv_PublicacionTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
+                app:layout_constraintTop_toBottomOf="@+id/tv_PublicacionName"
+                tools:text="Tipo de Animal" />
 
-    <TextView
-        android:id="@+id/tv_PublicacionTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:fontFamily="casual"
-        app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
-        app:layout_constraintTop_toBottomOf="@+id/tv_PublicacionEdad"
-        tools:text="Tipo de Animal" />
+            <TextView
+                android:id="@+id/tv_PublicacionLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="480 likes" />
 
-    <TextView
-        android:id="@+id/tv_PublicacionLikes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="40dp"
-        app:fontFamily="casual"
-        app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
-        app:layout_constraintTop_toBottomOf="@+id/tv_PublicacionTipo"
-        tools:text="480 likes" />
+            <TextView
+                android:id="@+id/tv_PublicacionEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
+                app:layout_constraintTop_toBottomOf="@+id/tv_PublicacionTipo"
+                tools:text="Edad" />
+
+            <TextView
+                android:id="@+id/tv_PublicacionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_Publiaciones"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Nombre" />
+
+            <ImageView
+                android:id="@+id/iv_Publiaciones"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleX=".8"
+                android:scaleY=".8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/black" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
