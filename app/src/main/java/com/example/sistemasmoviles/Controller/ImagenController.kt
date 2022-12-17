@@ -1,6 +1,7 @@
 package com.example.sistemasmoviles.Controller
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.example.sistemasmoviles.HTTP.RestEngine
 import com.example.sistemasmoviles.HTTP.Service
@@ -14,14 +15,15 @@ class ImagenController (var imagen:ImagenPubli){
     fun agregarImagen(context: Context){//POST
 
         val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
-        val result: Call<Int> = service.setImage(imagen)
+        val result: Call<Void> = service.setImage(imagen)
 
-        result.enqueue(object: Callback<Int> {
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                Toast.makeText(context,"Error",Toast.LENGTH_LONG).show()
+        result.enqueue(object: Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Toast.makeText(context,t.message.toString(),Toast.LENGTH_LONG).show()
+                Log.e("t.message",t.message.toString())
             }
 
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 Toast.makeText(context,"OK",Toast.LENGTH_LONG).show()
             }
         })
