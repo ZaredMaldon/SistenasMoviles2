@@ -55,7 +55,6 @@ class ActivityPusuario : AppCompatActivity() {
         binding = ActivityPusuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         textNombre = findViewById(R.id.id_NombreU)
         textCorreo = findViewById(R.id.id_EmailU)
         imageview = findViewById(R.id.iv_usuarioImage)

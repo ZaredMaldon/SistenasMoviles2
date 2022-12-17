@@ -2,29 +2,25 @@ package com.example.sistemasmoviles
 
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.sistemasmoviles.HTTP.RestEngine
 import com.example.sistemasmoviles.HTTP.Service
 import com.example.sistemasmoviles.Model.Chat
 import com.example.sistemasmoviles.Model.Respuesta
 import com.example.sistemasmoviles.Model.RespuestaImagen
-import com.example.sistemasmoviles.databinding.ActivityBuscarBinding
+import com.example.sistemasmoviles.Model.Usuario
 import com.example.sistemasmoviles.databinding.ActivityPmascotaBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
-import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,8 +30,10 @@ class ActivityPmascota : AppCompatActivity() {
 
     private var idPubli=0
     private var idUsuario= ""
+    private var nombreMascota=""
     private lateinit var binding: ActivityPmascotaBinding
     private val listaCorusel = mutableListOf<CarouselItem>()
+    private var otherUser = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +50,50 @@ class ActivityPmascota : AppCompatActivity() {
         }
 
         Toast.makeText(this, idPubli.toString(), Toast.LENGTH_SHORT).show()
+
         getPublicacion()
+
+        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<Respuesta> = service.getPublicacionesById(idPubli)
+
+        result.enqueue(object: Callback<Respuesta> {
+
+            override fun onFailure(call: Call<Respuesta>, t: Throwable){
+
+                Toast.makeText( this@ActivityPmascota,"Error",Toast.LENGTH_LONG).show()
+                Log.e("ErrorGetPubli: ",t.message.toString())
+            }
+
+            override fun onResponse(call: Call<Respuesta>, response: retrofit2.Response<Respuesta>){
+                val publicacion = response.body()
+                if(response.isSuccessful){
+
+                    idUsuario = publicacion?.Usuario.toString()
+                    nombreMascota = publicacion?.Nombre.toString()
+
+                    getImages()
+
+                    Toast.makeText(this@ActivityPmascota,publicacion?.Nombre,Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+
+        var mDataBase = FirebaseDatabase.getInstance().reference
+
+        mDataBase.child("User").addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+
+                    otherUser = snapshot.child(idUsuario).child("Email").value.toString()
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
     }
 
     private fun getPublicacion() {
@@ -75,6 +116,7 @@ class ActivityPmascota : AppCompatActivity() {
                     binding.tvTipoP.text = publicacion?.Tipo
                     binding.tvDescripcionP.text = publicacion?.Descripcion
                     idUsuario = publicacion?.Usuario.toString()
+
                     getImages()
 
                     Toast.makeText(this@ActivityPmascota,publicacion?.Nombre,Toast.LENGTH_LONG).show()
@@ -125,32 +167,13 @@ class ActivityPmascota : AppCompatActivity() {
     }
 
     fun onClickVolver(view: View) {
-        val change = Intent(this,ActivityBuscar::class.java)
-        startActivity(change)
-    }
-
-    fun onClickHome(view: View) {
-        val change = Intent(this,ActivityPublicaciones::class.java)
-        startActivity(change)
-    }
-
-    fun onClickMensajes(view: View) {
-        val change = Intent(this,ActivityChats::class.java)
-        startActivity(change)
-    }
-
-    fun onClickBuscar(view: View) {
-        val change = Intent(this,ActivityBuscar::class.java)
+        val change = Intent(this,ActivityMenu::class.java)
         startActivity(change)
     }
 
     fun onClickAdopcion(view: View) {
 
         var user = ""
-
-        var db = Firebase.firestore
-
-        lateinit var otherUser: String;
 
         val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val pref: String = preferences.getString("UsuarioJson", "")!!
@@ -165,9 +188,11 @@ class ActivityPmascota : AppCompatActivity() {
 
         val chat = Chat(
             id = chatId,
-            name = "Chat con $otherUser",
+            name = nombreMascota,
             users = users
         )
+
+        var db = Firebase.firestore
 
         db.collection("chats").document(chatId).set(chat)
         db.collection("users").document(user).collection("chats").document(chatId).set(chat)

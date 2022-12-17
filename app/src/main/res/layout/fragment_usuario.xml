@@ -8,36 +8,6 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar11"
-        android:layout_width="381dp"
-        android:layout_height="88dp"
-        android:layout_below="@+id/toolbar7"
-        android:layout_alignStart="@+id/toolbar7"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/corner_radius"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
-
-    <TextView
-        android:id="@+id/id_Mascotas2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="1dp"
-        android:text="@string/mascotas_registradas"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
-
-    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="306dp"
@@ -55,15 +25,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="154dp"
-        android:layout_height="155dp"
+        android:id="@+id/iv_usuarioImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/toolbar"
         android:layout_alignBottom="@+id/toolbar"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="113dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="117dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,13 +40,14 @@
         app:srcCompat="@drawable/person" />
 
     <TextView
-        android:id="@+id/id_NombreU7"
-        android:layout_width="wrap_content"
+        android:id="@+id/id_NombreU"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="58dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center_horizontal"
         android:text="Nombre de Usuario"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
@@ -86,8 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/id_EmailU"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton20"
@@ -104,13 +72,12 @@
         app:tint="#FFFFFF" />
 
     <TextView
-        android:id="@+id/id_EmailU2"
-        android:layout_width="wrap_content"
+        android:id="@+id/id_EmailU"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/toolbar"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="17dp"
+        android:gravity="center_horizontal"
         android:text="email@gmail.com"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FFFFFF"
@@ -118,7 +85,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:layout_constraintVertical_bias="0.72" />
 
     <TextView
@@ -131,26 +97,10 @@
         android:layout_marginBottom="1dp"
         android:text="@string/mascotas_registradas"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar7"
-        android:layout_width="381dp"
-        android:layout_height="88dp"
-        android:layout_below="@+id/id_Mascotas3"
-        android:layout_alignStart="@+id/id_Mascotas3"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/corner_radius"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton21"
@@ -167,5 +117,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/edit"
         app:tint="#FFFFFF" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPublicacionesU"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/id_Mascotas3"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>

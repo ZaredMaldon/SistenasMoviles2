@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
@@ -39,6 +40,10 @@ class ActivityMenu : AppCompatActivity() {
     private var usuario: FragmentUsuario = FragmentUsuario()
     private var editar: FragmentEditar = FragmentEditar()
 
+    private lateinit var adapterUsuario: PostAdapter
+
+    var listaP = mutableListOf<Respuesta>()
+
     fun onClickVolver(view: View) {
         supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
     }
@@ -49,6 +54,57 @@ class ActivityMenu : AppCompatActivity() {
 
     fun onClickEditar(view: View) {
         supportFragmentManager.beginTransaction().replace(R.id.container, editar).commit()
+    }
+
+    fun onClickMascota(id: Int) {
+        val change = Intent(this, ActivityPmascota::class.java)
+        change.putExtra("idPubli", id)
+        startActivity(change)
+    }
+
+    fun onClickBuscar(view: View) {//Buscar
+        var tvBuscar: TextView = findViewById(R.id.tvBuscar)
+        if(tvBuscar.text.isNullOrEmpty()){
+            getPublicaciones()
+        }else{
+            getPub(tvBuscar.text.toString())
+        }
+    }
+
+    private fun getPub(query: String?) {
+
+        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<List<Respuesta>> = service.getPublicaciones(query)
+
+        Log.e("getPublicaciones",result.toString())
+
+        result.enqueue(object: Callback<List<Respuesta>> {
+
+            override fun onFailure(call: Call<List<Respuesta>>, t: Throwable){
+
+                Toast.makeText( this@ActivityMenu,t.message.toString(),Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<List<Respuesta>>, response: retrofit2.Response<List<Respuesta>>){
+                //showData(response.body()!!)
+                val publis: List<Respuesta>? = response.body()
+                val pub:List<Respuesta> = publis?: emptyList()
+                listaP.clear()
+                listaP.addAll(pub)
+                adapterUsuario =
+                    PostAdapter(
+                        postsList = listaP,
+                        onClickListener = {
+                                publicacion -> onClickMascota(publicacion.id)
+                        }
+                    )
+                adapterUsuario.notifyDataSetChanged()
+
+                initRecyclerView()
+
+                Toast.makeText(this@ActivityMenu,"OK",Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     fun onClickLogOut(view: View) {
@@ -128,11 +184,55 @@ class ActivityMenu : AppCompatActivity() {
                 }
                 R.id.search -> {
                     supportFragmentManager.beginTransaction().replace(R.id.container, buscar).commit()
+                    getPublicaciones()
                     return@setOnItemSelectedListener true
                 }
             }
             false
         }
+
+    }
+
+    fun getPublicaciones() {
+        val service: Service =  RestEngine.getRestEngine().create(Service::class.java)
+        val result: Call<List<Respuesta>> = service.getPublicaciones()
+
+        Log.e("getPublicaciones",result.toString())
+
+        result.enqueue(object: Callback<List<Respuesta>> {
+
+            override fun onFailure(call: Call<List<Respuesta>>, t: Throwable){
+
+                Toast.makeText( this@ActivityMenu,t.message,Toast.LENGTH_LONG).show()
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onResponse(call: Call<List<Respuesta>>, response: retrofit2.Response<List<Respuesta>>){
+                //showData(response.body()!!)
+                val publis: List<Respuesta>? = response.body()
+                val pub:List<Respuesta> = publis?: emptyList()
+                listaP.clear()
+                listaP.addAll(pub)
+                adapterUsuario =
+                    PostAdapter(
+                        postsList = listaP,
+                        onClickListener = {
+                                publicacion -> onClickMascota(publicacion.id)
+                        }
+                    )
+                adapterUsuario.notifyDataSetChanged()
+
+                initRecyclerView()
+                Toast.makeText( this@ActivityMenu,"OK",Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun initRecyclerView(){
+
+        val recyclerViewPublis: RecyclerView = findViewById(R.id.recyclerViewPublis)
+        recyclerViewPublis.layoutManager = LinearLayoutManager(this)
+        recyclerViewPublis.adapter = adapterUsuario
 
     }
 
