@@ -24,7 +24,7 @@ class ActivityLogin : AppCompatActivity() {
 
     private var login: LoginFragment = LoginFragment()
     private var register: RegisterFragment = RegisterFragment()
-    private lateinit var image:String
+    var image = ""
     private val File = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -146,6 +146,14 @@ class ActivityLogin : AppCompatActivity() {
         return matcher.matches()
     }
 
+    fun isEmailValid(email: String): Boolean {
+        val regEx = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*\$"
+        val inputStr: CharSequence = email
+        val pattern: Pattern = Pattern.compile(regEx, Pattern.UNICODE_CASE)
+        val matcher: Matcher = pattern.matcher(inputStr)
+        return matcher.matches()
+    }
+
     fun onClickRegistrar(view: View) {//Registro
 
         var txtName: EditText =findViewById(R.id.TB_NombreU)
@@ -164,30 +172,30 @@ class ActivityLogin : AppCompatActivity() {
         var contraseñaU: String = txtContrasenia.text.toString()
         var confirmar: String = txtConfirmar.text.toString()
 
-        if (!TextUtils.isEmpty(nombreU) && !TextUtils.isEmpty(emailU) && !TextUtils.isEmpty(apellidoP) && !TextUtils.isEmpty(apellidoM) && !TextUtils.isEmpty(usuarioU) && !TextUtils.isEmpty(contraseñaU)) {//revisamos que no estan vacios
-            if(isPasswordValid(contraseñaU))
-                if(contraseñaU == confirmar) {
+        if (!TextUtils.isEmpty(nombreU) && !TextUtils.isEmpty(emailU) && !TextUtils.isEmpty(apellidoP) && !TextUtils.isEmpty(apellidoM) && !TextUtils.isEmpty(usuarioU) && !TextUtils.isEmpty(contraseñaU) && image != "") {//revisamos que no estan vacios
+            if(isEmailValid(emailU)){
+                if(isPasswordValid(contraseñaU))
+                    if(contraseñaU == confirmar) {
 
-                    var db = UsuarioController()
-                    db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU, image)
+                        var db = UsuarioController()
+                        db.createNewAccount(emailU, nombreU, apellidoP, apellidoM, usuarioU, contraseñaU, image)
 
-                    var auth = FirebaseAuth.getInstance()
+                        Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
 
-                    auth.signInWithEmailAndPassword(emailU, contraseñaU)
-                        .addOnCompleteListener(this){
-                                task->
-                            if(task.isSuccessful){
-                                Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
-                                action()
-                            }
-                        }
-                }
+                        supportFragmentManager.beginTransaction().replace(R.id.container, login).commit()
+
+                    }
+                    else{
+                        Toast.makeText(this, "Las contraseñas son distintas", Toast.LENGTH_SHORT).show()
+                    }
                 else{
-                    Toast.makeText(this, "Las contraseñas son distintas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Contraseña no valida", Toast.LENGTH_SHORT).show()
                 }
-            else{
-                Toast.makeText(this, "Contraseña no valida", Toast.LENGTH_SHORT).show()
             }
+            else{
+                Toast.makeText(this, "Email no valido", Toast.LENGTH_SHORT).show()
+            }
+
         }
         else{
             Toast.makeText(this, "Rellene todos los campos", Toast.LENGTH_SHORT).show()
