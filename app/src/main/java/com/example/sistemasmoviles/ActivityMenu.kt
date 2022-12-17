@@ -98,10 +98,14 @@ class ActivityMenu : AppCompatActivity() {
 
     }
 
+    fun isNumber(s: String?): Boolean {
+        return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
+    }
+
     fun onClickPublicar(view: View) {
         //Aqui poner la lista con las direcciones de las imagenes y agregarla a la tabla de imagenes
         /*DATOS DE LA PUBLICACION*/
-
+        var validacion = true
         var firebaseAuth = FirebaseAuth.getInstance()
         var userFirebase = firebaseAuth.currentUser!!
 
@@ -112,17 +116,42 @@ class ActivityMenu : AppCompatActivity() {
 
         /*API*/
         /* Publicacion */
+        if(txtNombre.text.isNullOrEmpty()||txtEdad.text.isNullOrEmpty()||txtTipo.text.isNullOrEmpty()||txtDescripcion.text.isNullOrEmpty()||links.isEmpty()){
+            Toast.makeText(this, "Llene todos los datos", Toast.LENGTH_SHORT).show()
+            validacion=false
+        }
+        if(!isNumber(txtEdad.text.toString())){
+            Toast.makeText(this, "Edad debe ser un numero", Toast.LENGTH_SHORT).show()
+        }   
+        
+        
+        if(validacion){
+            var publi=Publicacion(txtNombre.text.toString(),txtEdad.text.toString(),txtTipo.text.toString(),txtDescripcion.text.toString(), 20,1,userFirebase.uid)
+            Log.e("Links",links.toString())
+            PublicacionController(publi).agregar(links,this@ActivityMenu)
+            Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
 
-        var publi=Publicacion(txtNombre.text.toString(),txtEdad.text.toString(),txtTipo.text.toString(),txtDescripcion.text.toString(), 20,1,userFirebase.uid)
-        Log.e("Links",links.toString())
-        PublicacionController(publi).agregar(links,this@ActivityMenu)
-        Toast.makeText(this, "Publicado exitosamente", Toast.LENGTH_SHORT).show()
+<<<<<<< HEAD
+            supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
+            
+        }
+            
 
+        
+
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
         txtNombre.setText("")
         txtEdad.setText("")
         txtTipo.setText("")
         txtDescripcion.setText("")
         supportFragmentManager.beginTransaction().replace(R.id.container, home).commit()
+<<<<<<< Updated upstream
+=======
+>>>>>>> 2cafb20be187ba0a31a6b386c3eee7c16deca1a0
+>>>>>>> Stashed changes
 
     }
 
